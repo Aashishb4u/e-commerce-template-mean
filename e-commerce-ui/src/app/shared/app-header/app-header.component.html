@@ -1,0 +1,115 @@
+<nav *ngIf="showHeader" class="nc-Header sticky top-0 w-full left-0 right-0 z-40 nc-header-bg shadow-sm dark:border-b dark:border-neutral-700 app-header-nav full-width shadow-class navbar nav-background sticky-top
+navbar-expand-md navbar-light bg-light">
+  <div #home class="landing-nav container-fluid">
+    <div class="d-flex align-items-center gap-3">
+      <div *ngIf="sharedService.showBackIcon | async" (click)="backClicked()" class="header-back">
+        <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+          <i class="fa fa-chevron-left"></i>
+        </button>
+      </div>
+      <a class="navbar-brand d-flex align-items-center justify-content-center" href="#">
+        <img width="50" [src]="sharedService?.companyLogoTransperant" alt="Company Logo" class="logo-image">
+      </a>
+    </div>
+    <div class="low-767">
+      <div *ngIf="!isAuthenticated" class="ml-auto d-flex align-items-center justify-content-end">
+        <button class="setting-icon-mobile" [matMenuTriggerFor]="menu" mat-mini-fab
+                aria-label="Example icon button with a filter list icon">
+          <mat-icon>settings</mat-icon>
+        </button>
+      </div>
+      <div *ngIf="isAuthenticated" class="cursor-pointer user-icon-container">
+        <div [matMenuTriggerFor]="userMenu" #menuTrigger class="user-menu">
+          <div class="user-icon">
+            <button mat-mini-fab class="mat-button-icon-btn"
+                    aria-label="Example icon button with a plus one icon">
+              <mat-icon>account_circle</mat-icon>
+            </button>
+          </div>
+          <div class="user-name-box"><b>{{apiService?.userName | titlecase}}</b></div>
+        </div>
+        <mat-menu #userMenu="matMenu">
+          <ng-template matMenuContent let-id="id">
+            <button mat-menu-item
+                    (click)="onAdminPanel()">Admin Panel
+              <mat-icon color="primary">home</mat-icon>
+            </button>
+            <button mat-menu-item
+                    (click)="onChangePassword()">Change Password
+              <mat-icon color="primary">lock</mat-icon>
+            </button>
+            <button mat-menu-item
+                    (click)="logout()">Log Out
+              <mat-icon color="primary">logout</mat-icon>
+            </button>
+          </ng-template>
+        </mat-menu>
+      </div>
+    </div>
+    <button class="d-none navbar-toggler d-flex" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="high-767 d-flex navbar-collapse menu-bar justify-content-between" id="navbarSupportedContent">
+      <div  class="d-flex w-100 ml-auto">
+        <ul class="navbar-nav">
+          <li [routerLink]="['/home']" [routerLinkActive]="'active'" class="nav-item nav-menu">
+            <div class="cursor-pointer nav-link" aria-current="page">Home</div>
+          </li>
+          <li [routerLink]="['/destinations']" [routerLinkActive]="'active'" class="nav-item nav-menu ">
+            <div class="cursor-pointer nav-link">Destinations</div>
+          </li>
+          <li [routerLink]="['/campings']" [routerLinkActive]="'active'" class="nav-item nav-menu ">
+            <div class="cursor-pointer nav-link">Camping</div>
+          </li>
+          <li [routerLink]="['/about-us']" [routerLinkActive]="'active'" class="nav-item nav-menu">
+            <div class="cursor-pointer nav-link">About Us</div>
+          </li>
+          <li [routerLink]="['/contact-us']" [routerLinkActive]="'active'" class="nav-item nav-menu">
+            <div class="cursor-pointer nav-link" >Contact Us</div>
+          </li>
+        </ul>
+      </div>
+      <div *ngIf="!isAuthenticated" class="ml-auto d-flex align-items-center justify-content-end">
+        <button class="setting-icon-mobile" [matMenuTriggerFor]="menu" mat-mini-fab
+                aria-label="Example icon button with a filter list icon">
+          <mat-icon>settings</mat-icon>
+        </button>
+      </div>
+      <div *ngIf="isAuthenticated" class="cursor-pointer d-flex justify-content-end">
+        <div [matMenuTriggerFor]="userMenu" #menuTrigger class="d-flex justify-content-center align-items-center">
+          <div class="user-icon">
+            <button mat-mini-fab class="mat-button-icon-btn m-r-1"
+                    aria-label="Example icon button with a plus one icon">
+              <mat-icon>account_circle</mat-icon>
+            </button>
+          </div>
+          <div class="user-name-box"><b>{{apiService?.userName | titlecase}}</b></div>
+        </div>
+        <mat-menu #userMenu="matMenu">
+          <ng-template matMenuContent let-id="id">
+            <button mat-menu-item
+                    (click)="onAdminPanel()">Admin Panel
+              <mat-icon color="primary">home</mat-icon>
+            </button>
+            <button mat-menu-item
+                    (click)="onChangePassword()">Change Password
+              <mat-icon color="primary">lock</mat-icon>
+            </button>
+            <button mat-menu-item
+                    (click)="logout()">Log Out
+              <mat-icon color="primary">logout</mat-icon>
+            </button>
+          </ng-template>
+        </mat-menu>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<mat-menu #menu="matMenu">
+  <button (click)="onLogin()" mat-menu-item><mat-icon color="primary">
+    account_circle</mat-icon>Log In</button>
+</mat-menu>
+
+

@@ -1,0 +1,111 @@
+
+.landing-nav {
+  padding: 0 30px;
+}
+
+.sticky-top {
+  z-index: 1000 !important;
+}
+
+.nav-background {
+  //background: var(--primary-color) !important;
+  background: #fff !important;
+  //  Logo Font - Cinzel Decorative
+}
+
+
+.logo-image {
+  width: 70px;
+  height: auto;
+}
+
+.setting-icon-mobile {
+  background: var(--color-white) !important;
+}
+
+.menu-bar {
+  padding-left: 2%;
+}
+
+.nav-menu {
+  margin: 0 20px;
+  color: var(--color-white);
+  border-bottom: 3px solid transparent;
+  font-family: "Jost", sans-serif;
+  &:hover, &.active {
+    cursor: pointer;
+    border-bottom: 3px solid var(--secondary-color);
+  }
+  a {
+    color: var(--primary-color);
+    font-size: 16px;
+  }
+}
+
+.user-name-box {
+  line-height: 1.4;
+}
+
+.app-header-nav {
+  height: 75px;
+}
+
+.user-icon-container {
+  display: flex;
+  justify-content: flex-end;
+  .user-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+//
+//#navbarSupportedContent {
+//  display: flex !important;
+//}
+
+
+@media only screen and (min-width: 768px) {
+  .nav-menu {
+    margin: 0 10px;
+  }
+  .nav-menu a {
+    font-size: 13px;
+  }
+  .high-767 {
+    display: flex !important;
+  }
+  .low-767 {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .high-767 {
+    display: none !important;
+  }
+
+  .low-767 {
+    display: flex !important;
+  }
+  .user-icon-container {
+    .user-menu {
+      gap: 10px;
+      flex-direction: column;
+      .user-name-box {
+        font-size: 10px;
+      }
+    }
+  }
+
+  .menu-bar {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 15px;
+  }
+
+  .app-header-nav {
+    height: 95px;
+  }
+}
