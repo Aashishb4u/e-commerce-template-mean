@@ -1,19 +1,59 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body {
   margin: 0;
-  color: #333;
+  color: #222 !important;
   font-family: "Jost", sans-serif;
   font-optical-sizing: auto;
   background: #fff;
 }
 
-p, div, span {
+p, div, span, h2, h1, h3, h4, h5 {
   font-family: "Jost", sans-serif !important;
 }
 
-mat-icon {
-  color: #333 !important;
+.navigation__link {
+  display: inline-block;
+  position: relative;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  color: #222222;
+  font-weight: 500;
+  line-height: 1.5rem;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.navigation__link:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0.7rem;
+  width: 0;
+  height: 2px;
+  transition: width 0.28s cubic-bezier(0.47, 0, 0.745, 0.715);
+  background-color: currentColor;
+}
+.navigation__link:hover:after {
+  width: 2em;
+}
+
+.theme-btn {
+  background: #084DE5 !important;
+  color: #fff !important;
+  padding: 10px 15px;
+}
+
+h2 {
+  font-size: 1.25rem !important;
+}
+
+h1 {
+  font-size: 2rem !important;
+  margin: 0 !important;
 }

@@ -21,6 +21,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {HttpClientModule} from "@angular/common/http";
+import {SlickCarouselModule} from "ngx-slick-carousel";
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import {HttpClientModule} from "@angular/common/http";
     MatButtonModule,
     MatMenuModule,
     MatSnackBarModule,
-    HttpClientModule
+    HttpClientModule,
+    SlickCarouselModule
   ],
   providers: [
     provideClientHydration(),

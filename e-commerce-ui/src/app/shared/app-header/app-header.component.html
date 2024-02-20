@@ -1,6 +1,6 @@
-<nav *ngIf="showHeader" class="nc-Header sticky top-0 w-full left-0 right-0 z-40 nc-header-bg shadow-sm dark:border-b dark:border-neutral-700 app-header-nav full-width shadow-class navbar nav-background sticky-top
+<nav *ngIf="showHeader" class="nc-Header sticky top-0 w-full left-0 right-0 z-40 nc-header-bg shadow-sm app-header-nav full-width shadow-class navbar nav-background sticky-top
 navbar-expand-md navbar-light bg-light">
-  <div #home class="landing-nav container-fluid">
+  <div #home class="px-8 2xl:px-24 xl:px-16 lg:px-16 md:px-12 sm:px-11 landing-nav container-fluid">
     <div class="d-flex align-items-center gap-3">
       <div *ngIf="sharedService.showBackIcon | async" (click)="backClicked()" class="header-back">
         <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
@@ -54,27 +54,53 @@ navbar-expand-md navbar-light bg-light">
       <div  class="d-flex w-100 ml-auto">
         <ul class="navbar-nav">
           <li [routerLink]="['/home']" [routerLinkActive]="'active'" class="nav-item nav-menu">
-            <div class="cursor-pointer nav-link" aria-current="page">Home</div>
+            <div class="cursor-pointer nav-link text-sm navigation__link" aria-current="page">Home</div>
           </li>
-          <li [routerLink]="['/destinations']" [routerLinkActive]="'active'" class="nav-item nav-menu ">
-            <div class="cursor-pointer nav-link">Destinations</div>
+          <li class="nav-item nav-menu ">
+            <div #locationMenuTrigger="matMenuTrigger"
+              [matMenuTriggerFor]="animals" class="cursor-pointer nav-link text-sm navigation__link">
+              <div class="d-flex gap-1 justify-content-center align-items-center">
+                <span>Products </span><mat-icon class="d-flex justify-content-center text-base">keyboard_arrow_down</mat-icon>
+              </div>
+            </div>
+            <mat-menu #animals="matMenu">
+              <button mat-menu-item [matMenuTriggerFor]="vertebrates">Additives</button>
+              <button mat-menu-item [matMenuTriggerFor]="invertebrates">Lubricants and Greeses</button>
+            </mat-menu>
+
+            <mat-menu #vertebrates="matMenu">
+              <button mat-menu-item>Diesel Additives</button>
+              <button mat-menu-item>Petrol Additives</button>
+              <button mat-menu-item>Oil Additives</button>
+              <button mat-menu-item>Cooling System Additives</button>
+            </mat-menu>
+
+            <mat-menu #invertebrates="matMenu">
+              <button mat-menu-item>Pasenger Motor Oil</button>
+              <button mat-menu-item>Gear Oil</button>
+              <button mat-menu-item>Greeses</button>
+            </mat-menu>
           </li>
           <li [routerLink]="['/campings']" [routerLinkActive]="'active'" class="nav-item nav-menu ">
-            <div class="cursor-pointer nav-link">Camping</div>
+            <div class="cursor-pointer nav-link text-sm navigation__link">Services</div>
           </li>
           <li [routerLink]="['/about-us']" [routerLinkActive]="'active'" class="nav-item nav-menu">
-            <div class="cursor-pointer nav-link">About Us</div>
+            <div class="cursor-pointer nav-link text-sm navigation__link">About Us</div>
           </li>
           <li [routerLink]="['/contact-us']" [routerLinkActive]="'active'" class="nav-item nav-menu">
-            <div class="cursor-pointer nav-link" >Contact Us</div>
+            <div class="cursor-pointer nav-link text-sm navigation__link" >Contact Us</div>
           </li>
         </ul>
       </div>
       <div *ngIf="!isAuthenticated" class="ml-auto d-flex align-items-center justify-content-end">
-        <button class="setting-icon-mobile" [matMenuTriggerFor]="menu" mat-mini-fab
-                aria-label="Example icon button with a filter list icon">
-          <mat-icon>settings</mat-icon>
-        </button>
+        <div class="d-flex gap-4">
+          <div>
+            <mat-icon class="cursor-pointer">shopping_cart</mat-icon>
+          </div>
+          <div>
+            <mat-icon class="cursor-pointer">settings</mat-icon>
+          </div>
+        </div>
       </div>
       <div *ngIf="isAuthenticated" class="cursor-pointer d-flex justify-content-end">
         <div [matMenuTriggerFor]="userMenu" #menuTrigger class="d-flex justify-content-center align-items-center">
