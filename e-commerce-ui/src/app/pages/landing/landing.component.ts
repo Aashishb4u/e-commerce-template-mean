@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import 'animate.css';
+import {SharedService} from "../../services/shared.service";
 
 @Component({
   selector: 'app-landing',
@@ -7,6 +8,8 @@ import 'animate.css';
   styleUrl: './landing.component.scss'
 })
 export class LandingComponent {
+  constructor(public sharedService: SharedService) {
+  }
   products: any = [
     {
       name: "Chain Clean Degeaser",
@@ -66,11 +69,6 @@ export class LandingComponent {
   ];
   slides = [
     {
-      img: "assets/banners/slick-3.png",
-      // subTitle: "Brake Fluids",
-      title: "Brake Fluids",
-    },
-    {
       img: "assets/banners/slick-1.png",
       // subTitle: "Automotive Oils",
       title: "Automotive Oils",
@@ -79,6 +77,11 @@ export class LandingComponent {
       img: "assets/banners/slick-2.png",
       // subTitle: "Lubricants",
       title: "Lubricants",
+    },
+    {
+      img: "assets/banners/slick-3.png",
+      // subTitle: "Brake Fluids",
+      title: "Brake Fluids",
     }
   ];
   testimonials: any = [
@@ -103,5 +106,9 @@ export class LandingComponent {
     "slidesToScroll": 1,
     "autoplay": true,
     "pauseOnHover": false
+  }
+
+  toggleCart() {
+    this.sharedService.showCart.next(true);
   }
 }

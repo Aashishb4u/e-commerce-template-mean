@@ -7,4 +7,19 @@ import { Component } from '@angular/core';
 })
 export class AboutUsComponent {
 
+  testimonialConfig = {
+    "slidesToShow": 3,
+    "centerMode": true,
+    "slidesToScroll": 1,
+    "autoplay": true,
+    "pauseOnHover": false
+  }
+  testimonials: any = [
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
+  ]
 }

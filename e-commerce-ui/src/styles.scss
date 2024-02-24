@@ -1,6 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+html, body {
+  height: 100%;
+}
+
+:root {
+  --blue-color: #084DE5;
+  --red-color: #FD191A;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -28,6 +36,7 @@ p, div, span, h2, h1, h3, h4, h5 {
   text-decoration: none;
   text-transform: uppercase;
 }
+
 .navigation__link:after {
   content: '';
   display: block;
@@ -39,6 +48,7 @@ p, div, span, h2, h1, h3, h4, h5 {
   transition: width 0.28s cubic-bezier(0.47, 0, 0.745, 0.715);
   background-color: currentColor;
 }
+
 .navigation__link:hover:after {
   width: 2em;
 }
@@ -49,11 +59,186 @@ p, div, span, h2, h1, h3, h4, h5 {
   padding: 10px 15px;
 }
 
+.btn-theme-2 {
+  background: #e4e4e4 !important;
+  color: #333 !important;
+  padding: 10px 15px;
+}
+
 h2 {
   font-size: 1.25rem !important;
 }
 
 h1 {
   font-size: 2rem !important;
+  line-height: 1.3 !important;
   margin: 0 !important;
 }
+
+h4 {
+  margin: 0 !important;
+}
+
+.nav-link_underscore {
+  position: relative;
+  padding: 0.6875rem 1.5625rem 0.4375rem;
+  color: #767676;
+}
+
+.nav-link_underscore:after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 1.5625rem;
+  width: 0;
+  height: 2px;
+  background-color: #222222;
+  transition: width 0.36s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-link_underscore:after {
+    transition: none;
+  }
+}
+
+.nav-link_underscore.theme-color:after {
+  background-color: #0F2041;
+}
+
+.nav-link_underscore:hover, .nav-link_underscore:focus, .nav-link_underscore.active, .nav-item.show .nav-link_underscore {
+  color: #222222;
+}
+
+.nav-link_underscore:hover:after, .nav-link_underscore:focus:after, .nav-link_underscore.active:after, .nav-item.show .nav-link_underscore:after {
+  width: calc(100% - 3.125rem);
+}
+
+.nav-link_underscore.underscore-sm:hover:after, .nav-link_underscore.underscore-sm:focus:after, .nav-link_underscore.underscore-sm.active:after, .nav-item.show .nav-link_underscore.underscore-sm:after {
+  width: 2rem;
+}
+
+.nav-link_underscore.underscore-md:hover:after, .nav-link_underscore.underscore-md:focus:after, .nav-link_underscore.underscore-md.active:after, .nav-item.show .nav-link_underscore.underscore-md:after {
+  width: calc((100% - 1.5625rem * 2) * 0.7);
+}
+
+.nav-link_underscore.disabled {
+  color: #6c757d;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.nav-link {
+  &.active {
+    border: none;
+    background: transparent !important;
+  }
+
+  &:hover {
+    border: none;
+  }
+}
+
+.reviews-group {
+  gap: 0.1rem;
+
+  i {
+    font-size: 9px;
+    color: #ffc78b;
+  }
+}
+
+.tab-content-container > .tab-pane {
+  display: none;
+}
+
+.tab-content-container > .active {
+  display: flex;
+}
+
+
+.pc__title {
+  font-size: 1rem !important;
+  white-space: initial;
+  overflow: initial;
+  text-overflow: initial;
+  line-height: 1.5;
+}
+
+.pc__category {
+  margin-bottom: .25rem !important;
+  color: #767676;
+  font-weight: 400;
+  line-height: 1.7143;
+  font-size: 12px;
+}
+.slick-track
+{
+  display: flex !important;
+}
+
+.slick-slide
+{
+  height: inherit !important;
+}
+
+.counter-input:focus-visible {
+  outline: none !important;
+  border: none !important;
+}
+
+.text-xxs {
+  font-size: 8px !important;
+}
+
+.mat-drawer:not(.mat-drawer-side) {
+  position: fixed;
+}
+
+.mat-drawer-backdrop {
+  position: fixed !important;
+}
+
+.mat-drawer-inner-container {
+  overflow: hidden !important;
+}
+
+.smooth-16 {
+  text-shadow: calc(var(--stroke-width) * 1) calc(var(--stroke-width) * 0) 0 var(--stroke-color), calc(var(--stroke-width) * 0.9239) calc(var(--stroke-width) * 0.3827) 0 var(--stroke-color), calc(var(--stroke-width) * 0.7071) calc(var(--stroke-width) * 0.7071) 0 var(--stroke-color), calc(var(--stroke-width) * 0.3827) calc(var(--stroke-width) * 0.9239) 0 var(--stroke-color), calc(var(--stroke-width) * 0) calc(var(--stroke-width) * 1) 0 var(--stroke-color), calc(var(--stroke-width) * -0.3827) calc(var(--stroke-width) * 0.9239) 0 var(--stroke-color), calc(var(--stroke-width) * -0.7071) calc(var(--stroke-width) * 0.7071) 0 var(--stroke-color), calc(var(--stroke-width) * -0.9239) calc(var(--stroke-width) * 0.3827) 0 var(--stroke-color), calc(var(--stroke-width) * -1) calc(var(--stroke-width) * 0) 0 var(--stroke-color), calc(var(--stroke-width) * -0.9239) calc(var(--stroke-width) * -0.3827) 0 var(--stroke-color), calc(var(--stroke-width) * -0.7071) calc(var(--stroke-width) * -0.7071) 0 var(--stroke-color), calc(var(--stroke-width) * -0.3827) calc(var(--stroke-width) * -0.9239) 0 var(--stroke-color), calc(var(--stroke-width) * 0) calc(var(--stroke-width) * -1) 0 var(--stroke-color), calc(var(--stroke-width) * 0.3827) calc(var(--stroke-width) * -0.9239) 0 var(--stroke-color), calc(var(--stroke-width) * 0.7071) calc(var(--stroke-width) * -0.7071) 0 var(--stroke-color), calc(var(--stroke-width) * 0.9239) calc(var(--stroke-width) * -0.3827) 0 var(--stroke-color);
+}
+
+.about-list .list-wrap {
+  margin-bottom: 50px
+}
+
+.about-list .list-wrap li {
+  display: flex;
+  align-items: baseline;
+  font-family: var(--tg-heading-font-family);
+  color: var(--tg-heading-font-color);
+  font-size: 18px;
+  margin-bottom: 10px
+}
+
+.about-list .list-wrap li:last-child {
+  margin-bottom: 0
+}
+
+.about-list .list-wrap li i {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #072a75;
+  color: #fff;
+  font-size: 12px;
+  margin-right: 15px
+}
+//
+//.tg-element-title {
+//  color: var(--secondary-color) !important;
+//}

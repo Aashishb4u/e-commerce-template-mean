@@ -1,1 +1,85 @@
-<p>contact-us works!</p>
+<app-header></app-header>
+<section class="contact-area pt-120 pb-120">
+  <div class="px-8 2xl:px-24 xl:px-16 lg:px-16 md:px-12
+  sm:px-11 py-5">
+    <div class="row justify-content-center">
+      <div class="col-xl-6 col-lg-10">
+        <div class=" shadow-sm contact-form-wrap p-4" data-background="/assets/banners/contact_us_banner.png"
+             style="background-image: url('/assets/banners/contact_us_banner.png')">
+          <h1 class="title mb-1">
+           <strong>Contact With Us</strong>
+          </h1>
+          <p class="text-gray-500 text-base mb-5">Send us a message and we' ll respond as soon as possible</p>
+          <form action="#" class="contact-form">
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="form-grp w-100"><input class="shadow-sm d-flex w-100 p-3" id="firstName" type="text" placeholder="First Name*" ></div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="form-grp"><input class="shadow-sm d-flex w-100 p-3" id="lastName" type="text" placeholder="Last Name*"></div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="form-grp"><input class="shadow-sm d-flex w-100 p-3" id="email" type="email" placeholder="Email Address*"></div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="form-grp"><input class="shadow-sm d-flex w-100 p-3" id="phone" type="text" placeholder="Phone Number*"></div>
+              </div>
+            </div>
+            <div class="form-grp mb-4 w-100">
+              <input class="shadow-sm d-flex w-100 p-3" id="subject" type="text" placeholder="Subject" >
+            </div>
+            <div class="form-grp mb-4 w-100">
+              <textarea class="shadow-sm d-flex w-100 p-3" rows="10" id="message" placeholder="Your Message here"></textarea>
+            </div>
+            <button class="btn theme-btn w-100" type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+      <div class="col-xl-6 col-lg-10">
+        <div class="d-flex gap-4 flex-column">
+          <div style="background: #f4f6ff" class="shadow-sm contact-info-wrap p-4">
+            <h1 class="title mb-1">
+              <strong>Need Any Help?</strong>
+            </h1>
+            <p class="text-gray-500 text-base mb-5">Call us or message and we' ll respond as soon as possible</p>
+            <ul class="list-wrap row row-cols-2 row-cols-md-2 row-cols-lg-2 row-cols-xxl-2 row-cols-xl-2">
+              <li>
+                <div class="contact-info-item align-items-center d-flex justify-content-center flex-column">
+                  <div class="icon">
+                    <i class="fas fa-phone-alt"></i>
+                  </div>
+                  <div class="content d-flex flex-column gap-1 text-center">
+                    <a href="tel:0123456789">+(91) 7083509839</a>
+                    <a href="tel:0123456789">info&#64;uro-one.com</a></div>
+                </div>
+              </li>
+<!--              <li>-->
+<!--                <div class="contact-info-item d-flex align-items-center justify-content-center flex-column">-->
+<!--                  <div class="icon">-->
+<!--                    <i class="fas fa-envelope"></i>-->
+<!--                  </div>-->
+<!--                  <div class="content d-flex flex-column gap-1 text-center">-->
+<!--                    <a href="mailto:infoyour&#64;gmail.com">info&#64;gmail.com</a>-->
+<!--                    <a href="mailto:infoyour&#64;gmail.com">domaininfo&#64;gmail.com</a>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </li>-->
+              <li>
+                <div class="contact-info-item d-flex align-items-center justify-content-center flex-column">
+                  <div class="icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div class="content">
+                    <p class="text-center">Plot No 23 Flat No 3, Dwaraka Complex, Chatrapati, Sambhaji Nagar, Town Centre, N 1, Cidco, Aurangabad, Maharashtra 431007</p></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div id="contact-map" class="d-flex position-relative">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3752.1801001671397!2d75.36578530940768!3d19.874615626342127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdba3d2eeac7fd9%3A0x10f1578331b2501!2sIBluechem%20Group%20India!5e0!3m2!1sen!2sin!4v1708768656530!5m2!1sen!2sin" width="100%" height="360" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

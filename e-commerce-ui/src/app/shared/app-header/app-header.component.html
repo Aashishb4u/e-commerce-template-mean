@@ -64,21 +64,21 @@ navbar-expand-md navbar-light bg-light">
               </div>
             </div>
             <mat-menu #animals="matMenu">
-              <button mat-menu-item [matMenuTriggerFor]="vertebrates">Additives</button>
-              <button mat-menu-item [matMenuTriggerFor]="invertebrates">Lubricants and Greeses</button>
+              <button [routerLink]="['/shop-list']" mat-menu-item [matMenuTriggerFor]="vertebrates">Additives</button>
+              <button [routerLink]="['/shop-list']" mat-menu-item [matMenuTriggerFor]="invertebrates">Lubricants and Greeses</button>
             </mat-menu>
 
             <mat-menu #vertebrates="matMenu">
-              <button mat-menu-item>Diesel Additives</button>
-              <button mat-menu-item>Petrol Additives</button>
-              <button mat-menu-item>Oil Additives</button>
-              <button mat-menu-item>Cooling System Additives</button>
+              <button [routerLink]="['/shop-list']" mat-menu-item>Diesel Additives</button>
+              <button [routerLink]="['/shop-list']" mat-menu-item>Petrol Additives</button>
+              <button [routerLink]="['/shop-list']" mat-menu-item>Oil Additives</button>
+              <button [routerLink]="['/shop-list']" mat-menu-item>Cooling System Additives</button>
             </mat-menu>
 
             <mat-menu #invertebrates="matMenu">
-              <button mat-menu-item>Pasenger Motor Oil</button>
-              <button mat-menu-item>Gear Oil</button>
-              <button mat-menu-item>Greeses</button>
+              <button [routerLink]="['/shop-list']" mat-menu-item>Pasenger Motor Oil</button>
+              <button [routerLink]="['/shop-list']" mat-menu-item>Gear Oil</button>
+              <button [routerLink]="['/shop-list']" mat-menu-item>Greeses</button>
             </mat-menu>
           </li>
           <li [routerLink]="['/campings']" [routerLinkActive]="'active'" class="nav-item nav-menu ">

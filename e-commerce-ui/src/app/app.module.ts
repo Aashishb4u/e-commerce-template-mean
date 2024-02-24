@@ -22,6 +22,8 @@ import {MatMenuModule} from "@angular/material/menu";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {HttpClientModule} from "@angular/common/http";
 import {SlickCarouselModule} from "ngx-slick-carousel";
+import { FancyCarousalComponent } from './shared/fancy-carousal/fancy-carousal.component';
+import {MatSidenavModule} from "@angular/material/sidenav";
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import {SlickCarouselModule} from "ngx-slick-carousel";
     AccountDetailsComponent,
     LoginRegisterComponent,
     AppHeaderComponent,
-    FooterComponent
+    FooterComponent,
+    FancyCarousalComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ import {SlickCarouselModule} from "ngx-slick-carousel";
     MatMenuModule,
     MatSnackBarModule,
     HttpClientModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    MatSidenavModule
   ],
   providers: [
     provideClientHydration(),

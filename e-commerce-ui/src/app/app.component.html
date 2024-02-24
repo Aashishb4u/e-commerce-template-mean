@@ -1,2 +1,55 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="over">
+   <div class="w-96 h-screen position-relative">
+     <div class="bg-gray-100 p-3 d-flex align-items-center justify-content-between">
+       <div>SHOPPING BAG ( {{products.length}} )</div>
+       <div><i (click)="drawer.toggle()" class="cursor-pointer fa fa-times"></i></div>
+     </div>
+     <div style="height: 65vh" class="overflow-y-scroll">
+       <ng-container *ngFor="let product of products">
+         <div class="row m-0 p-3">
+           <div class="col-4 m-0 p-0">
+             <img class="h-100 w-100 object-fit-cover" [src]="product.img" alt="Data" />
+           </div>
+           <div class="col-5 d-flex gap-2 flex-column">
+             <div class="text-sm">{{product?.name}}</div>
+             <div class="d-flex gap-1 flex-column">
+               <div class="text-sm text-gray-500">{{product?.cat}}</div>
+               <div class="text-sm text-gray-500">400ml</div>
+             </div>
+             <div class="position-relative d-flex align-items-center">
+               <i class="cursor-pointer text-xxs text-gray-500 fa fa-minus"></i>
+               <input value="1" style="height: 24px; width: 60px; padding: 0 0 0 15px" type="number" class="text-center text-gray-800 text-sm bg-transparent counter-input" />
+               <i class="cursor-pointer text-xxs text-gray-500 fa fa-plus"></i>
+             </div>
+           </div>
+           <div class="col-3">
+             <div class="d-flex h-100 flex-column justify-content-between">
+               <div class="d-flex justify-content-end">
+                 <i class="cursor-pointer fa fa-times text-gray-400 text-sm"></i>
+               </div>
+               <div class="text-sm text-gray-800 ">
+                 <strong>{{product?.price}}</strong>
+               </div>
+             </div>
+           </div>
+         </div>
+         <hr>
+       </ng-container>
+     </div>
+     <div class="sticky bottom-0 mb-2 bg-white">
+       <hr>
+       <div class="d-flex align-items-center justify-content-between p-3">
+         <div class="m-0 text-sm">SUBTOTAL:</div>
+         <span class="cart-subtotal fw-medium">$176.00</span>
+       </div>
+       <div class="d-flex flex-column gap-3 px-3">
+         <button type="button" class="w-100 btn btn-theme-2">View Cart</button>
+         <button class="w-100 btn btn-primary px-4 theme-btn">Checkout</button>
+       </div>
+     </div>
+   </div>
+  </mat-drawer>
 <router-outlet></router-outlet>
+</mat-drawer-container>
 <app-footer></app-footer>

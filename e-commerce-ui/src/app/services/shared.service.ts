@@ -21,5 +21,6 @@ export class SharedService {
   companyLogoAnimation: any = appConstants.creativeHandLogoAnimation;
   businessLogoName: any = '';
   businessLogoImageLink: any = '';
+  showCart = new BehaviorSubject(false);
   constructor() { }
 }
