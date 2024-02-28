@@ -1,1 +1,75 @@
-<p>dashboard works!</p>
+<app-header></app-header>
+<div class="bg-white d-flex flex-column">
+  <div class="px-xl-5 px-md-3 px-lg-3 px-xs-2">
+    <div class="my-4 position-relative">
+      <div class="row w-100 p-4">
+        <div class="d-flex align-items-center justify-content-md-between flex-wrap mb-3 mb-xl-4">
+          <h1 class="section-title theme-color text-uppercase"><strong>My Account</strong></h1>
+        </div>
+        <div class="d-flex flex-column col-xl-3 col-lg-3">
+          <ul class="border-0 nav nav-tabs account-nav">
+            <li class="mb-2 w-100 cursor-pointer nav-item"
+                id="collections-tab-1-trigger" data-bs-toggle="tab" href="#collections-tab-1" role="tab"
+                aria-controls="collections-tab-1" aria-selected="true">
+              <a class="uppercase inline-block nav-link nav-link_underscore active menu-link menu-link_us-s menu-link_active">Orders</a>
+            </li>
+            <li class="mb-2 w-100 cursor-pointer nav-item"
+                id="collections-tab-2-trigger" data-bs-toggle="tab" href="#collections-tab-2" role="tab"
+                aria-controls="collections-tab-2" aria-selected="true" >
+              <a class="uppercase inline-block nav-link nav-link_underscore menu-link menu-link_us-s menu-link_active">Account Details</a>
+            </li>
+            <li class="mb-2 w-100 cursor-pointer nav-item"
+                id="collections-tab-3-trigger" data-bs-toggle="tab" href="#collections-tab-3" role="tab"
+                aria-controls="collections-tab-3" aria-selected="true">
+              <a class="uppercase inline-block nav-link nav-link_underscore menu-link menu-link_us-s menu-link_active">Log Out</a>
+            </li>
+          </ul>
+        </div>
+        <div class="tab-content-container col-xl-9 col-lg-9">
+          <div class="tab-pane fade show active" id="collections-tab-1" role="tabpanel"
+               aria-labelledby="collections-tab-1-trigger">
+            <table class="table table-bordered">
+              <thead class="thead-dark">
+              <tr>
+                <th class="uppercase text-sm p-3" style="background: #e4e4e4">ORDER</th>
+                <th class="uppercase text-sm p-3" style="background: #e4e4e4">DATE</th>
+                <th class="uppercase text-sm p-3" style="background: #e4e4e4">STATUS</th>
+                <th class="uppercase text-sm p-3" style="background: #e4e4e4">TOTAL</th>
+                <th class="uppercase text-sm p-3" style="background: #e4e4e4">ACTIONS</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td class="p-3"><u>#2416</u></td>
+                <td class="p-3">October 1, 2023</td>
+                <td class="p-3">On hold	</td>
+                <td class="p-3">$1,200.65 for 3 items</td>
+                <td class="p-3">
+                  <button class="btn theme-btn">View</button>
+                </td>
+              </tr>
+              <tr>
+                <td class="p-3"><u>#2416</u></td>
+                <td class="p-3">October 1, 2023</td>
+                <td class="p-3">On hold	</td>
+                <td class="p-3">$1,200.65 for 3 items</td>
+                <td class="p-3">
+                  <button class="btn theme-btn">View</button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tab-pane fade show" id="collections-tab-2" role="tabpanel"
+               aria-labelledby="collections-tab-2-trigger">
+            Hey
+          </div>
+          <div class="tab-pane fade show" id="collections-tab-3" role="tabpanel"
+               aria-labelledby="collections-tab-3-trigger">
+            Hey
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

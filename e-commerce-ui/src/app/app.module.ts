@@ -24,6 +24,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {SlickCarouselModule} from "ngx-slick-carousel";
 import { FancyCarousalComponent } from './shared/fancy-carousal/fancy-carousal.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
+import { OurServicesComponent } from './pages/our-services/our-services.component';
+import { DynamicMatMenuComponent } from './shared/dynamic-mat-menu/dynamic-mat-menu.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import {MatSidenavModule} from "@angular/material/sidenav";
     LoginRegisterComponent,
     AppHeaderComponent,
     FooterComponent,
-    FancyCarousalComponent
+    FancyCarousalComponent,
+    OurServicesComponent,
+    DynamicMatMenuComponent
   ],
   imports: [
     BrowserModule,

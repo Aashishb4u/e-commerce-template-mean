@@ -1,1 +1,306 @@
-<p>shoping-cart works!</p>
+<app-header></app-header>
+<div class="bg-white d-flex flex-column">
+  <div class="px-xl-5 px-md-3 px-lg-3 px-xs-2">
+    <div class="my-4 position-relative">
+      <!--      <div class="nc-BgGlassmorphism absolute inset-x-0 md:top-10 left-2.5 xl:top-40 min-h-0 pl-20 py-24 flex overflow-hidden z-0" data-nc-id="BgGlassmorphism"><span class="block bg-[#ef233c] w-72 h-72 rounded-full mix-blend-multiply filter blur-3xl opacity-10 lg:w-96 lg:h-96"></span><span class="block bg-[#04868b] w-72 h-72 -ml-20 mt-40 rounded-full mix-blend-multiply filter blur-3xl opacity-10 lg:w-96 lg:h-96 nc-animation-delay-2000"></span></div>-->
+      <div class="d-flex align-items-center justify-content-md-between flex-wrap mb-3 mb-xl-4">
+        <h1 class="section-title theme-color text-uppercase">Shopping Cart</h1>
+
+        <ul class="border-none nav nav-tabs justify-content-center" id="collections-tab" role="tablist">
+          <li class="nav-item cursor-pointer" role="presentation">
+            <div [ngClass]="{ 'show active': viewBy === 'shoppingBag' }" class="nav-link nav-link_underscore underscore-md text-uppercase theme-color fs-13 fw-semi-bold active"
+                 id="collections-tab-1-trigger" data-bs-toggle="tab" (click)="onChangeView('shoppingBag')"  role="tab"
+                 aria-controls="collections-tab-1" aria-selected="true">Shopping Bag
+            </div>
+          </li>
+          <li class="nav-item cursor-pointer" role="presentation">
+            <div [ngClass]="{ 'show active': viewBy === 'checkout' }" class="nav-link nav-link_underscore underscore-md text-uppercase fs-13 fw-semi-bold theme-color"
+                 id="collections-tab-2-trigger" data-bs-toggle="tab" (click)="onChangeView('checkout')"  role="tab"
+                 aria-controls="collections-tab-2" aria-selected="true">Shopping and Checkout
+            </div>
+          </li>
+          <li class="nav-item cursor-pointer" role="presentation">
+            <div [ngClass]="{ 'show active': viewBy === 'confirmation' }" class="nav-link nav-link_underscore underscore-md text-uppercase fs-13 fw-semi-bold theme-color"
+                  (click)="onChangeView('confirmation')">Confirmation
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="d-flex flex-column tab-content-container">
+        <div [ngClass]="{ 'show active': viewBy === 'shoppingBag' }" class="tab-pane fade"
+             aria-labelledby="collections-tab-1-trigger">
+          <div class="row w-100">
+            <div class="d-flex justify-content-center col-xl-8 col-lg-6 p-4">
+              <table style="width: 95%" class="cart-table table">
+                <thead>
+                <tr>
+                  <td class="uppercase">Product</td>
+                  <td class="uppercase">Price</td>
+                  <td class="uppercase">Quantity</td>
+                  <td class="uppercase">Subtotal</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let product of products">
+                  <td class="py-3">
+                    <div class="d-flex gap-3">
+                      <img style="width: 100px" class="border-1 rounded p-2 h-100 object-fit-cover"
+                           [src]="product.img" alt="">
+                      <div class="d-flex flex-column gap-2">
+                        <div>{{product.name}}</div>
+                        <div class="d-flex gap-1 flex-column text-gray-500">
+                          <div>Size: 400ml</div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="py-3">
+                    <div class="py-2">
+                      {{product.price}}
+                    </div>
+                  </td>
+                  <td class="py-3">
+                    <div class="d-flex">
+                      <div class="position-relative d-flex border-2 align-items-center"><i
+                        class="cursor-pointer text-xs text-gray-500 p-2 fa fa-minus"></i><input
+                        value="1" type="number"
+                        class="text-center text-gray-800 text-base bg-transparent"
+                        style="height: 38px; width: 50px; padding: 0 0 0 9px;">
+                        <i class="cursor-pointer text-xs text-gray-500 p-2 fa fa-plus"></i>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="py-3">
+                    <div class="py-2 d-flex justify-content-between">
+                      <div>$345</div>
+                      <div class="cursor-pointer">
+                        <i class="text-gray-400 fa fa-times"></i>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-xl-4 col-lg-6">
+              <div class="shopping-cart__totals-wrapper">
+                <div class="sticky-content sticky top-0">
+                  <div class="shopping-cart__totals p-4 border-2 mb-3 w-100">
+                    <h3 class="mb-2 text-lg uppercase">Cart Totals</h3>
+                    <table class="w-100 cart-totals table">
+                      <tbody>
+                      <tr>
+                        <td class="py-3 uppercase">Subtotal</td>
+                        <td class="py-3">$1300</td>
+                      </tr>
+                      <tr>
+                        <td class="py-3 uppercase">Shipping</td>
+                        <td class="py-3">
+                          <div class="form-check">
+                            <input class="form-check-input form-check-input_fill" type="checkbox" value=""
+                                   id="free_shipping">
+                            <label class="form-check-label" for="free_shipping">Free shipping</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input form-check-input_fill" type="checkbox" value="" id="flat_rate">
+                            <label class="form-check-label" for="flat_rate">Flat rate: $49</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input form-check-input_fill" type="checkbox" value=""
+                                   id="local_pickup">
+                            <label class="form-check-label" for="local_pickup">Local pickup: $8</label>
+                          </div>
+                          <div>Shipping to AL.</div>
+                          <div>
+                            <a href="#" class="menu-link menu-link_us-s">CHANGE ADDRESS</a>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="py-3 uppercase">VAT</td>
+                        <td class="py-3">$19</td>
+                      </tr>
+                      <tr class="border-0">
+                        <td class="border-0 py-3 uppercase">Total</td>
+                        <td class="border-0 py-3">$1319</td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="mobile_fixed-btn_wrapper">
+                    <div class="w-100">
+                      <button class="btn btn-primary w-100 theme-btn">PROCEED TO CHECKOUT</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div [ngClass]="{ 'show active': viewBy === 'checkout' }" class="tab-pane fade"
+             aria-labelledby="collections-tab-2-trigger">
+          <div class="row w-100">
+            <div class="col-xl-8 col-lg-6 p-4">
+             <h2 class="uppercase mb-2">BILLING DETAILS</h2>
+              <form action="#" class="contact-form">
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="form-grp w-100"><input class="shadow-sm border d-flex w-100 p-3" id="firstName" type="text" placeholder="First Name*" ></div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-grp"><input class="shadow-sm border d-flex w-100 p-3" id="lastName" type="text" placeholder="Last Name*"></div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-grp"><input class="shadow-sm border d-flex w-100 p-3" id="email" type="email" placeholder="Email Address*"></div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-grp"><input class="shadow-sm border d-flex w-100 p-3" id="phone" type="text" placeholder="Phone Number*"></div>
+                  </div>
+                </div>
+                <div class="form-grp mb-4 w-100">
+                  <input class="shadow-sm border d-flex w-100 p-3" id="subject" type="text" placeholder="Subject" >
+                </div>
+                <div class="form-grp mb-4 w-100">
+                  <textarea class="shadow-sm border d-flex w-100 p-3" rows="10" id="message" placeholder="Your Message here"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="col-xl-4 col-lg-6">
+              <div class="shopping-cart__totals-wrapper">
+                <div class="sticky-content sticky top-0">
+                  <div class="shopping-cart__totals p-4 border-2 mb-3 w-100">
+                    <h3 class="mb-2 text-lg uppercase">YOUR ORDER</h3>
+                    <table class="w-100 cart-totals table">
+                      <tbody>
+                      <tr>
+                        <td class="py-3 uppercase">PRODUCT</td>
+                        <td class="py-3 uppercase">SUBTOTAL</td>
+                      </tr>
+                      <tr>
+                        <td class="py-3">
+                          <div class="d-flex flex-column gap-2">
+                            <div class="text-gray-500">Zessi Dresses x 2</div>
+                            <div class="text-gray-500">Kirby T-Shirt</div>
+                          </div>
+                        </td>
+                        <td class="py-3">
+                          <div class="d-flex flex-column gap-2">
+                            <div class="text-gray-500">$32.50</div>
+                            <div class="text-gray-500">	$29.90</div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="py-3 uppercase">SUBTOTAL</td>
+                        <td class="py-3">$19</td>
+                      </tr>
+                      <tr>
+                        <td class="py-3 uppercase">SHIPPING</td>
+                        <td class="py-3">	Free shipping</td>
+                      </tr>
+                      <tr>
+                        <td class="py-3 uppercase">VAT</td>
+                        <td class="py-3">$19</td>
+                      </tr>
+                      <tr class="border-0">
+                        <td class="border-0 py-3 uppercase">Total</td>
+                        <td class="border-0 py-3">$1319</td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="mobile_fixed-btn_wrapper">
+                    <div class="w-100">
+                      <button class="btn btn-primary w-100 theme-btn uppercase">Place Order</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div [ngClass]="{ 'show active': viewBy === 'confirmation' }" class="tab-pane fade"
+             aria-labelledby="collections-tab-2-trigger">
+          <div class="row w-100">
+            <div class="col-xl-12 col-lg-12 p-4">
+              <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
+                <div class="mb-3">
+                  <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="40" cy="40" r="40" fill="#084DE5"></circle>
+                    <path d="M52.9743 35.7612C52.9743 35.3426 52.8069 34.9241 52.5056 34.6228L50.2288 32.346C49.9275 32.0446 49.5089 31.8772 49.0904 31.8772C48.6719 31.8772 48.2533 32.0446 47.952 32.346L36.9699 43.3449L32.048 38.4062C31.7467 38.1049 31.3281 37.9375 30.9096 37.9375C30.4911 37.9375 30.0725 38.1049 29.7712 38.4062L27.4944 40.683C27.1931 40.9844 27.0257 41.4029 27.0257 41.8214C27.0257 42.24 27.1931 42.6585 27.4944 42.9598L33.5547 49.0201L35.8315 51.2969C36.1328 51.5982 36.5513 51.7656 36.9699 51.7656C37.3884 51.7656 37.8069 51.5982 38.1083 51.2969L40.385 49.0201L52.5056 36.8996C52.8069 36.5982 52.9743 36.1797 52.9743 35.7612Z" fill="white"></path>
+                  </svg>
+                </div>
+                <h1>Your order is completed!</h1>
+                <div class="text-center text-gray-500 text-sm">Thank you for your order! We have successfully received it. <br> Your tracking ID will be provided and updated on your dashboard shortly.</div>
+              </div>
+              <div class="d-flex w-100">
+                <div class="my-3 w-100 border-dashed border-3 p-4 d-flex justify-content-around">
+                  <div class="d-flex flex-column gap-2">
+                    <h3 class="m-0">Order Number</h3>
+                    <div class="text-gray-500">13119</div>
+                  </div>
+                  <div class="d-flex flex-column gap-2">
+                    <h3 class="m-0">Date</h3>
+                    <div class="text-gray-500">01/01/2000</div>
+                  </div>
+                  <div class="d-flex flex-column gap-2">
+                    <h3 class="m-0">Total</h3>
+                    <div class="text-gray-500">$389</div>
+                  </div>
+                  <div class="d-flex flex-column gap-2">
+                    <h3 class="m-0">Payment Method</h3>
+                    <div class="text-gray-500">UPI</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-12 col-lg-12 px-4">
+              <div class="border-2 mb-3 w-100 p-5">
+                <h3 class="mb-2 text-lg uppercase">YOUR ORDER</h3>
+                <table class=" w-100 cart-totals table">
+                  <tbody>
+                  <tr>
+                    <td class="py-3 uppercase">PRODUCT</td>
+                    <td class="py-3 uppercase">SUBTOTAL</td>
+                  </tr>
+                  <tr>
+                    <td class="py-3">
+                      <div class="d-flex flex-column gap-2">
+                        <div class="text-gray-500">Zessi Dresses x 2</div>
+                        <div class="text-gray-500">Kirby T-Shirt</div>
+                      </div>
+                    </td>
+                    <td class="py-3">
+                      <div class="d-flex flex-column gap-2">
+                        <div class="text-gray-500">$32.50</div>
+                        <div class="text-gray-500">	$29.90</div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 uppercase">SUBTOTAL</td>
+                    <td class="py-3">$19</td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 uppercase">SHIPPING</td>
+                    <td class="py-3">	Free shipping</td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 uppercase">VAT</td>
+                    <td class="py-3">$19</td>
+                  </tr>
+                  <tr class="border-0">
+                    <td class="border-0 py-3 uppercase">Total</td>
+                    <td class="border-0 py-3">$1319</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

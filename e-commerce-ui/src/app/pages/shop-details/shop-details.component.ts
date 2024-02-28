@@ -9,6 +9,46 @@ import {SharedService} from "../../services/shared.service";
 export class ShopDetailsComponent {
   constructor(public sharedService: SharedService) {
   }
+
+  testimonialConfig = {
+    "slidesToShow": 4,
+    "slidesToScroll": 1,
+    "autoplay": true,
+    "infinite": true,
+    "pauseOnHover": false
+  }
+
+  mainSlickConfig = {
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    infinite: true,
+    arrows: true,
+    fade:true,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    speed: 300,
+    lazyLoad: 'ondemand',
+    asNavFor: '.thumb-nav',
+    prevArrow: '<div class="slick-prev"><i class="i-prev"></i><span class="sr-only sr-only-focusable">Previous</span></div>',
+    nextArrow: '<div class="slick-next"><i class="i-next"></i><span class="sr-only sr-only-focusable">Next</span></div>'
+  }
+
+  bottomSlick = {
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    infinite: true,
+    autoplay: true,
+    centerPadding: '0px',
+    asNavFor: '.main-img-slider',
+    dots: false,
+    centerMode: true,
+    draggable: true,
+    speed: 200,
+    focusOnSelect: true,
+    prevArrow: '<div class="slick-prev"><i class="i-prev"></i><span class="sr-only sr-only-focusable">Previous</span></div>',
+    nextArrow: '<div class="slick-next"><i class="i-next"></i><span class="sr-only sr-only-focusable">Next</span></div>'
+  }
+
   products: any = [
     {
       name: "Chain Clean Degeaser",
@@ -67,13 +107,54 @@ export class ShopDetailsComponent {
     }
   ];
 
-  testimonialConfig = {
-    "slidesToShow": 4,
-    "slidesToScroll": 1,
-    "autoplay": true,
-    "infinite": true,
-    "pauseOnHover": false
-  }
+
+  dummyImages = [
+    {
+      img: 'http://via.placeholder.com/72x50'
+    },
+    {
+      img: 'http://via.placeholder.com/72x50'
+    },
+    {
+      img: 'http://via.placeholder.com/72x50'
+    },
+    {
+      img: 'http://via.placeholder.com/72x50'
+    },
+    {
+      img: 'http://via.placeholder.com/72x50'
+    },
+    {
+      img: 'http://via.placeholder.com/72x50'
+    },
+    {
+      img: 'http://via.placeholder.com/72x50'
+    },
+    {
+      img: 'http://via.placeholder.com/72x50'
+    }
+  ]
+
+  images: any = [
+    {
+     img: 'http://via.placeholder.com/1920x1280'
+    },
+    {
+      img: 'http://via.placeholder.com/1920x1280'
+    },
+    {
+      img: 'http://via.placeholder.com/1920x1280'
+    },
+    {
+      img: 'http://via.placeholder.com/1920x1280'
+    },
+    {
+      img: 'http://via.placeholder.com/1920x1280'
+    },
+    {
+      img: 'http://via.placeholder.com/1920x1280'
+    }
+  ]
 
   toggleCart() {
     this.sharedService.showCart.next(true);

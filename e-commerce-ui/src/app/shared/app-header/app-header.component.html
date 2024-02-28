@@ -56,32 +56,16 @@ navbar-expand-md navbar-light bg-light">
           <li [routerLink]="['/home']" [routerLinkActive]="'active'" class="nav-item nav-menu">
             <div class="cursor-pointer nav-link text-sm navigation__link" aria-current="page">Home</div>
           </li>
-          <li class="nav-item nav-menu ">
-            <div #locationMenuTrigger="matMenuTrigger"
-              [matMenuTriggerFor]="animals" class="cursor-pointer nav-link text-sm navigation__link">
+          <li [routerLink]="['/shop-list']" class="nav-item nav-menu ">
+            <div class="cursor-pointer nav-link text-sm navigation__link">
               <div class="d-flex gap-1 justify-content-center align-items-center">
-                <span>Products </span><mat-icon class="d-flex justify-content-center text-base">keyboard_arrow_down</mat-icon>
+                <span>Products </span>
+<!--                <mat-icon class="d-flex justify-content-center text-base">keyboard_arrow_down</mat-icon>-->
               </div>
             </div>
-            <mat-menu #animals="matMenu">
-              <button [routerLink]="['/shop-list']" mat-menu-item [matMenuTriggerFor]="vertebrates">Additives</button>
-              <button [routerLink]="['/shop-list']" mat-menu-item [matMenuTriggerFor]="invertebrates">Lubricants and Greeses</button>
-            </mat-menu>
 
-            <mat-menu #vertebrates="matMenu">
-              <button [routerLink]="['/shop-list']" mat-menu-item>Diesel Additives</button>
-              <button [routerLink]="['/shop-list']" mat-menu-item>Petrol Additives</button>
-              <button [routerLink]="['/shop-list']" mat-menu-item>Oil Additives</button>
-              <button [routerLink]="['/shop-list']" mat-menu-item>Cooling System Additives</button>
-            </mat-menu>
-
-            <mat-menu #invertebrates="matMenu">
-              <button [routerLink]="['/shop-list']" mat-menu-item>Pasenger Motor Oil</button>
-              <button [routerLink]="['/shop-list']" mat-menu-item>Gear Oil</button>
-              <button [routerLink]="['/shop-list']" mat-menu-item>Greeses</button>
-            </mat-menu>
           </li>
-          <li [routerLink]="['/campings']" [routerLinkActive]="'active'" class="nav-item nav-menu ">
+          <li [routerLink]="['/services']" [routerLinkActive]="'active'" class="nav-item nav-menu ">
             <div class="cursor-pointer nav-link text-sm navigation__link">Services</div>
           </li>
           <li [routerLink]="['/about-us']" [routerLinkActive]="'active'" class="nav-item nav-menu">
@@ -95,10 +79,10 @@ navbar-expand-md navbar-light bg-light">
       <div *ngIf="!isAuthenticated" class="ml-auto d-flex align-items-center justify-content-end">
         <div class="d-flex gap-4">
           <div>
-            <mat-icon class="cursor-pointer">shopping_cart</mat-icon>
+            <mat-icon (click)="showCart()" class="cursor-pointer">shopping_cart</mat-icon>
           </div>
           <div>
-            <mat-icon class="cursor-pointer">settings</mat-icon>
+            <mat-icon [matMenuTriggerFor]="menu" class="cursor-pointer">settings</mat-icon>
           </div>
         </div>
       </div>
@@ -134,7 +118,8 @@ navbar-expand-md navbar-light bg-light">
 </nav>
 
 <mat-menu #menu="matMenu">
-  <button (click)="onLogin()" mat-menu-item><mat-icon color="primary">
+  <button mat-menu-item><mat-icon color="primary">
+<!--  <button (click)="onLogin()" mat-menu-item><mat-icon color="primary">-->
     account_circle</mat-icon>Log In</button>
 </mat-menu>
 

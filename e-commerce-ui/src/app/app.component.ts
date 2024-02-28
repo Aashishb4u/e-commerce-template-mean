@@ -11,6 +11,7 @@ import {isPlatformBrowser} from "@angular/common";
 })
 export class AppComponent implements OnInit {
   @ViewChild('drawer', {static: true}) sidenav: MatSidenav;
+  @ViewChild('loginDrawer', {static: true}) loginSideNav: MatSidenav;
   title = 'e-commerce-ui';
   products: any = [
     {
@@ -89,5 +90,20 @@ export class AppComponent implements OnInit {
         this.sidenav.toggle();
       }
     });
+    this.sharedService.showLogin.subscribe((val) => {
+      if(val) {
+        this.loginSideNav.toggle();
+      }
+    });
+  }
+
+  onViewCart() {
+    this.router.navigate(['/cart'], { state: { route: 'shoppingBag' } });
+    this.sidenav.close();
+  }
+
+  onCheckout() {
+    this.router.navigate(['/cart'], { state: { route: 'checkout' } });
+    this.sidenav.close();
   }
 }

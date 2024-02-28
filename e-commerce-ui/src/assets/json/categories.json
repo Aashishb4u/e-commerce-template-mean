@@ -1,0 +1,210 @@
+[
+  {
+    "name": "Additives",
+    "img": "assets/shop_banners/additives.png",
+    "children": [
+      {
+        "name": "Petrol system",
+        "img": "assets/shop_banners/petrol_system.png",
+        "children": [
+          {"name": "Petrol additive"},
+          {"name": "Engine Oil Flush"},
+          {"name": "Gear Oil Flush"},
+          {"name": "Valve and Injector cleaner"},
+          {"name": "Octane Booster"},
+          {"name": "Petrol Anti Smoke"}
+        ]
+      },
+      {
+        "name": "Diesel system",
+        "img": "assets/shop_banners/diesel_system.png",
+        "children": [
+          {"name": "Diesel Additive"},
+          {"name": "Gear Oil Flush"},
+          {"name": "Valve and Injector cleaner"},
+          {"name": "Cetane booster"},
+          {"name": "Diesel Fuel Stabilizer"},
+          {"name": "Diesel Anti Smoke"},
+          {"name": "Diesel Purge"},
+          {"name": "Diesel Bactericide 1:1000"},
+          {"name": "Diesel Winter Care 2:1000"},
+          {"name": "Bio Diesel Additive 2:1000"}
+        ]
+      },
+      {
+        "name": "Oil system",
+        "img": "assets/shop_banners/oil_system.png",
+        "children": [
+          {"name": "Engine Oil Flush"},
+          {"name": "Engine Oil Booster"}
+        ]
+      },
+      {
+        "name": "Cooling system",
+        "img": "assets/shop_banners/cooling_system.png",
+        "children": [
+          {"name": "Radiator Flush"},
+          {"name": "Radiator Oil Clean"}
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Industrial Oil",
+    "img": "assets/shop_banners/industrial_oil.png",
+    "children": [
+      {"name": "Hydraulic Oils"},
+      {"name": "Circulating Oils"},
+      {"name": "Gear Oils"},
+      {"name": "Compressor Oils"},
+      {"name": "Turbine Oils"},
+      {"name": "Way lubes"},
+      {"name": "Spindle Oils"},
+      {"name": "Fire Resistant"},
+      {"name": "Heat Transfer Fluids"},
+      {"name": "Air Line Lubricant"},
+      {"name": "Food Grade"},
+      {"name": "Wire Ropes"},
+      {"name": "Chain Lubricants"},
+      {"name": "Open Gears"}
+    ]
+  },
+  {
+    "name": "AUTOMOTIVE",
+    "img": "assets/shop_banners/automotive.png",
+    "children": [
+      {"name": "Passenger Cars Engine Oils"},
+      {"name": "Heavy Duty Engine Oils Motor Trucks"},
+      {"name": "Fleets"},
+      {"name": "Gear Oils"},
+      {"name": "Automatic Transmission Fluids"},
+      {"name": "Transmission and Hydraulic Fluids"},
+      {"name": "Brake Fluids"},
+      {"name": "Anti-Freezes Summer Coolant"},
+      {"name": "Washer Fluids"},
+      {"name": "Petrol system"},
+      {"name": "Diesel system"},
+      {"name": "Oil system"},
+      {"name": "Cooling system"},
+      {"name": "A/C Lubricants"},
+      {"name": "A/C Treatments"},
+      {"name": "A/C Cleaners"}
+    ]
+  },
+  {
+    "name": "Cosmetics",
+    "img": "assets/shop_banners/cosmetics.png",
+    "children": [
+      {"name": "Hydro finish Restore Polish PCS 1"},
+      {"name": "Perfect Micro Polish PCS 2"},
+      {"name": "Neo Image G3 Polish PCS 3"},
+      {"name": "IN-EX Interior and Exterior Super Gloss High Shine"}
+    ]
+  },
+  {
+    "name": "AEROSOLS",
+    "img": "assets/shop_banners/aerosols.png",
+    "children": [
+      {"name": "Chaine Clean and Degreaser Spray"},
+      {"name": "Chain Lube Adhesive Spray"},
+      {"name": "Disc Brake Cleaner Spray"},
+      {"name": "Brake Cleaner Liquid"},
+      {"name": "Throttle Body Cleaner Spray"},
+      {"name": "Multi Lube Penetrate Spray"},
+      {"name": "Silicone Spray"},
+      {"name": "Rust Looser Spray"},
+      {"name": "Electrical Contact Cleaner Spray"},
+      {"name": "Silicone Sealing Compound"},
+      {"name": "Vinyl Plastic and Rubber Care Spray"}
+    ]
+  },
+  {
+    "name": "CUTTING & GRINDING FLUIDS",
+    "img": "assets/shop_banners/cutting_and_grinding_fluids.png",
+    "children": [
+      {"name": "Water Soluble Oils"},
+      {"name": "Semi-Synthetic Coolants"},
+      {"name": "Full-Synthetic Coolants"},
+      {"name": "Straight Oils (Neat)"},
+      {"name": "EDM Fluids"}
+    ]
+  },
+  {
+    "name": "CORROSION PREVENTIVES",
+    "img": "assets/shop_banners/corrosion_preventives.png",
+    "children": [
+      {"name": "Water Based"},
+      {"name": "Oil Based"},
+      {"name": "Solvent Based"}
+    ]
+  },
+  {
+    "name": "CLEANERS",
+    "img": "assets/shop_banners/cleaners.png",
+    "children": [
+      {"name": "Deep Clean -Alkaline- Oil Rejecting"},
+      {"name": "Deep Shine 6 to 9 Floor Cleaners"},
+      {"name": "Nature Clean-Bio-Friendly Cleaner"},
+      {"name": "Emulsion – Oil Containing"},
+      {"name": "Multi Wash-Solvent"},
+      {"name": "Mineral Spirits"}
+    ]
+  },
+  {
+    "name": "DRAWING & STAMPING",
+    "img": "assets/shop_banners/drawing_and_stamping.png",
+    "children": [
+      {"name": "Soluble Oils (Water-Based)"},
+      {"name": "Synthetics (Water-Based)"},
+      {"name": "Neat Oils- Mineral based"},
+      {"name": "Hydro forming"},
+      {"name": "Solvent Based Vanishing Oils"}
+    ]
+  },
+  {
+    "name": "GREASES",
+    "img": "assets/shop_banners/greases.png",
+    "children": [
+      {"name": "High-Performance Greases"},
+      {"name": "Multi-Purpose Greases"},
+      {"name": "Multi-Purposes Greases with Moly"},
+      {"name": "High Temperature Greases"},
+      {"name": "Low Temperature Greases"},
+      {"name": "Open Gear Greases"},
+      {"name": "Food Grade Greases"}
+    ]
+  },
+  {
+    "name": "QUENCH & FORGING OILS",
+    "img": "assets/shop_banners/quench_and_forging_oils.png",
+    "children": [
+      {"name": "Quenching Oils"},
+      {"name": "Quenching Oil Additives"}
+    ]
+  },
+  {
+    "name": "PHOSPHATE COATING",
+    "img": "assets/shop_banners/phosphate_coating.png",
+    "children": [
+      {"name": "pre-treatment Chemicals"}
+    ]
+  },
+  {
+    "name": "LUBRICANTS ADDITIVES",
+    "img": "assets/shop_banners/lubricants_additives.png",
+    "children": [
+      {"name": "Engine Oil Additives Package"},
+      {"name": "Gear Oil Additive Package"},
+      {"name": "Hydraulic Oil Additive package"},
+      {"name": "Grease Additives"},
+      {"name": "Detergent And Dispersant"},
+      {"name": "ZDDP"},
+      {"name": "EP Anti-Wear Additive"},
+      {"name": "Friction Reducer"},
+      {"name": "Antioxidant"},
+      {"name": "Viscosity Index Improver"},
+      {"name": "Anti-Rust Additive"},
+      {"name": "Pour-Point Depressant"}
+    ]
+  }
+]

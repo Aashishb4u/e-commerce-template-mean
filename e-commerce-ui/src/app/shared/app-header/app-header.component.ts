@@ -14,7 +14,7 @@ export class AppHeaderComponent implements OnInit {
   showHeader: any = true;
   isAuthenticated: any = false;
   excludedPages: any = ['/login', '/change-password'];
-
+  categories: any = [];
 
   constructor(private _location: Location, public apiService: ApiService, public router: Router, public sharedService: SharedService) {}
 
@@ -28,6 +28,16 @@ export class AppHeaderComponent implements OnInit {
       }
     });
     this.apiService.isAuthenticated.subscribe(res => this.isAuthenticated = res);
+    this.getCategories();
+  }
+
+  getCategories() {
+    this.apiService.getCategoriesData().subscribe(
+      (res: any) => {
+        this.categories = res;
+        console.log(this.categories);
+        this.sharedService.categories.next(res);
+      }, (error => this.apiService.commonError(error)))
   }
 
   backClicked() {
@@ -46,10 +56,15 @@ export class AppHeaderComponent implements OnInit {
   }
 
   onLogin() {
-    this.router.navigate(['/login']);
+    this.sharedService.showLogin.next(true);
+    // this.router.navigate(['/login']);
   }
 
   onAdminPanel() {
     this.router.navigate(['/dashboard']);
+  }
+
+  showCart() {
+    this.sharedService.showCart.next(true);
   }
 }

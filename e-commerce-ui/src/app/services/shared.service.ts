@@ -22,5 +22,7 @@ export class SharedService {
   businessLogoName: any = '';
   businessLogoImageLink: any = '';
   showCart = new BehaviorSubject(false);
+  showLogin = new BehaviorSubject(false);
+  categories = new BehaviorSubject([]);
   constructor() { }
 }

@@ -28,6 +28,10 @@ export class ApiService {
     this.loadToken();
   }
 
+  getCategoriesData() {
+    return this.http.get(`assets/json/categories.json`);
+  }
+
   getDataStream(): Promise<any> {
     return new Promise((resolve, reject) => {
       const destinations$ = this.getAllDestinationsForWebsite();

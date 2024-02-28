@@ -1,14 +1,16 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import 'animate.css';
 import {SharedService} from "../../services/shared.service";
+import {ApiService} from "../../services/api.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss'
 })
-export class LandingComponent {
-  constructor(public sharedService: SharedService) {
+export class LandingComponent implements OnInit {
+  constructor(public router: Router, public sharedService: SharedService, public apiService: ApiService) {
   }
   products: any = [
     {
@@ -99,7 +101,6 @@ export class LandingComponent {
     "pauseOnHover": false,
     "fade": true
   };
-
   testimonialConfig = {
     "slidesToShow": 3,
     "centerMode": true,
@@ -107,8 +108,23 @@ export class LandingComponent {
     "autoplay": true,
     "pauseOnHover": false
   }
-
+  bullets: any = [];
   toggleCart() {
     this.sharedService.showCart.next(true);
   }
+
+  ngOnInit() {
+    this.sharedService.categories.subscribe((res: any) => {
+      console.log(res);
+      this.bullets = res;
+      console.log(this.bullets);
+    })
+  }
+
+  onSelectCategory(val: any) {
+    this.router.navigate(
+      ['/shop-list'],
+      { queryParams: {category: val.name.toLowerCase().split(' ').join('_')} });
+  }
+
 }

@@ -242,3 +242,6 @@ h4 {
 //.tg-element-title {
 //  color: var(--secondary-color) !important;
 //}
+md-sidenav-container > .md-sidenav-backdrop.md-sidenav-shown {
+  background-color: rgba(0, 0, 0, .6)
+}

@@ -1,0 +1,5 @@
+.cart-table tbody tr td > * {
+  transition: all 0.32s cubic-bezier(0.39, 0.575, 0.565, 1);
+  overflow: hidden;
+  max-height: 12rem;
+}

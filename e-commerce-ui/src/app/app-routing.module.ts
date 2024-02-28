@@ -10,6 +10,7 @@ import {ShopListComponent} from "./pages/shop-list/shop-list.component";
 import {ShopingCartComponent} from "./pages/shoping-cart/shoping-cart.component";
 import {AccountDetailsComponent} from "./pages/dashboard/account-details/account-details.component";
 import {OrdersComponent} from "./pages/dashboard/orders/orders.component";
+import {OurServicesComponent} from "./pages/our-services/our-services.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -19,6 +20,8 @@ const routes: Routes = [
   { path:  'home', component:  LandingComponent},
   { path:  'shop-details', component:  ShopDetailsComponent},
   { path:  'shop-list', component:  ShopListComponent},
+  { path:  'cart', component:  ShopingCartComponent},
+  { path:  'services', component:  OurServicesComponent},
   { path:  'cart', component:  ShopingCartComponent},
   {
     path: 'dashboard',

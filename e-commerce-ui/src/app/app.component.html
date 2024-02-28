@@ -44,11 +44,22 @@
          <span class="cart-subtotal fw-medium">$176.00</span>
        </div>
        <div class="d-flex flex-column gap-3 px-3">
-         <button type="button" class="w-100 btn btn-theme-2">View Cart</button>
-         <button class="w-100 btn btn-primary px-4 theme-btn">Checkout</button>
+         <button (click)="onViewCart()" type="button" class="w-100 btn btn-theme-2">View Cart</button>
+         <button (click)="onCheckout()" class="w-100 btn btn-primary px-4 theme-btn">Checkout</button>
        </div>
      </div>
    </div>
+  </mat-drawer>
+  <mat-drawer #loginDrawer class="example-sidenav" position="end" mode="over">
+    <div class="w-96 h-screen position-relative">
+      <div class="bg-gray-100 p-3 d-flex align-items-center justify-content-between">
+        <div class="uppercase">Login</div>
+        <div><i (click)="loginDrawer.toggle()" class="cursor-pointer fa fa-times"></i></div>
+      </div>
+      <div style="height: 65vh" class="overflow-y-scroll">
+
+      </div>
+    </div>
   </mat-drawer>
 <router-outlet></router-outlet>
 </mat-drawer-container>
