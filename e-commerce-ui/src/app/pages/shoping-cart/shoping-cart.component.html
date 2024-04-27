@@ -3,7 +3,7 @@
   <div class="px-xl-5 px-md-3 px-lg-3 px-xs-2">
     <div class="my-4 position-relative">
       <!--      <div class="nc-BgGlassmorphism absolute inset-x-0 md:top-10 left-2.5 xl:top-40 min-h-0 pl-20 py-24 flex overflow-hidden z-0" data-nc-id="BgGlassmorphism"><span class="block bg-[#ef233c] w-72 h-72 rounded-full mix-blend-multiply filter blur-3xl opacity-10 lg:w-96 lg:h-96"></span><span class="block bg-[#04868b] w-72 h-72 -ml-20 mt-40 rounded-full mix-blend-multiply filter blur-3xl opacity-10 lg:w-96 lg:h-96 nc-animation-delay-2000"></span></div>-->
-      <div class="d-flex align-items-center justify-content-md-between flex-wrap mb-3 mb-xl-4">
+      <div class="mb-14 d-flex align-items-center justify-content-md-between flex-wrap mb-3 mb-xl-4">
         <h1 class="section-title theme-color text-uppercase">Shopping Cart</h1>
 
         <ul class="border-none nav nav-tabs justify-content-center" id="collections-tab" role="tablist">
@@ -26,11 +26,11 @@
           </li>
         </ul>
       </div>
-      <div class="d-flex flex-column tab-content-container">
-        <div [ngClass]="{ 'show active': viewBy === 'shoppingBag' }" class="tab-pane fade"
+      <div [ngSwitch]="viewBy" class="d-flex flex-column tab-content-container">
+        <div *ngSwitchCase="'shoppingBag'" class="animate__animated animate__fadeIn"
              aria-labelledby="collections-tab-1-trigger">
           <div class="row w-100">
-            <div class="d-flex justify-content-center col-xl-8 col-lg-6 p-4">
+            <div class="d-flex justify-content-center col-xl-8 col-lg-6 px-4">
               <table style="width: 95%" class="cart-table table">
                 <thead>
                 <tr>
@@ -137,7 +137,7 @@
             </div>
           </div>
         </div>
-        <div [ngClass]="{ 'show active': viewBy === 'checkout' }" class="tab-pane fade"
+        <div *ngSwitchCase="'checkout'" class="animate__animated animate__fadeIn"
              aria-labelledby="collections-tab-2-trigger">
           <div class="row w-100">
             <div class="col-xl-8 col-lg-6 p-4">
@@ -219,7 +219,7 @@
             </div>
           </div>
         </div>
-        <div [ngClass]="{ 'show active': viewBy === 'confirmation' }" class="tab-pane fade"
+        <div *ngSwitchCase="'confirmation'" class="animate__animated animate__fadeIn"
              aria-labelledby="collections-tab-2-trigger">
           <div class="row w-100">
             <div class="col-xl-12 col-lg-12 p-4">

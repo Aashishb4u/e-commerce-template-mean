@@ -7,7 +7,13 @@ html, body {
 :root {
   --blue-color: #084DE5;
   --red-color: #FD191A;
+  --faint-red: #e37474;
 }
+
+//
+//.ngx-pagination .current {
+//  background: var(--faint-red) !important;
+//}
 
 @tailwind base;
 @tailwind components;
@@ -51,6 +57,12 @@ p, div, span, h2, h1, h3, h4, h5 {
 
 .navigation__link:hover:after {
   width: 2em;
+}
+
+.nav-item.active {
+  .navigation__link:after {
+    width: 2em;
+  }
 }
 
 .theme-btn {
@@ -149,9 +161,6 @@ h4 {
   }
 }
 
-.tab-content-container > .tab-pane {
-  display: none;
-}
 
 .tab-content-container > .active {
   display: flex;
@@ -173,13 +182,12 @@ h4 {
   line-height: 1.7143;
   font-size: 12px;
 }
-.slick-track
-{
+
+.slick-track {
   display: flex !important;
 }
 
-.slick-slide
-{
+.slick-slide {
   height: inherit !important;
 }
 
@@ -238,10 +246,43 @@ h4 {
   font-size: 12px;
   margin-right: 15px
 }
+
 //
 //.tg-element-title {
 //  color: var(--secondary-color) !important;
 //}
 md-sidenav-container > .md-sidenav-backdrop.md-sidenav-shown {
   background-color: rgba(0, 0, 0, .6)
+}
+
+.form-floating > .form-control:focus ~ label {
+  color: #222222;
+  transform: translateY(-1.9rem) !important;
+}
+
+.ck-editor__editable_inline:not(.ck-comment__input *) {
+  height: 300px;
+  overflow-y: auto;
+}
+
+.ck-editor {
+  ul {
+    list-style: inside !important;
+    padding: 0 0 0 1rem !important;
+  }
+
+  ol {
+    list-style: auto !important;
+    padding: 0 0 0 2rem !important;
+  }
+}
+
+/* In your global CSS file (styles.css) or a component-specific CSS file */
+.fade-in {
+  opacity: 1 !important;
+  transition: opacity 500ms ease-in; /* Adjust the duration and easing as desired */
+}
+
+[appFadeInOnView] {
+  opacity: 0; /* Initial opacity */
 }

@@ -3,6 +3,7 @@ import {SharedService} from "./services/shared.service";
 import {MatSidenav} from "@angular/material/sidenav";
 import {NavigationEnd, Router} from "@angular/router";
 import {isPlatformBrowser} from "@angular/common";
+import {ApiService} from "./services/api.service";
 
 @Component({
   selector: 'app-root',
@@ -71,7 +72,10 @@ export class AppComponent implements OnInit {
     }
   ];
   isBrowser: any = false;
-  constructor(@Inject(PLATFORM_ID) private platformId, public sharedService: SharedService, private router: Router) {
+  constructor(@Inject(PLATFORM_ID) private platformId,
+              public apiService: ApiService,
+              public sharedService: SharedService,
+              private router: Router) {
     this.isBrowser = isPlatformBrowser(platformId);
   }
 
@@ -95,6 +99,12 @@ export class AppComponent implements OnInit {
         this.loginSideNav.toggle();
       }
     });
+
+    this.sharedService.doLogout.subscribe((res) => {
+      if(res) {
+        this.logout();
+      }
+    });
   }
 
   onViewCart() {
@@ -105,5 +115,23 @@ export class AppComponent implements OnInit {
   onCheckout() {
     this.router.navigate(['/cart'], { state: { route: 'checkout' } });
     this.sidenav.close();
+  }
+
+  togglePopup() {
+    const toggleStatus = this.sharedService.showLogout.value;
+   this.sharedService.showLogout.next(!toggleStatus);
+  }
+
+  confirm() {
+    this.sharedService.doLogout.next(true);
+    this.router.navigate(['/login']);
+    this.sharedService.showLogout.next(false);
+  }
+
+  logout() {
+    this.apiService.logout().subscribe((res) => {
+      this.apiService.showToast(res.message);
+      this.router.navigate(['/login']);
+    });
   }
 }

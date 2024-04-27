@@ -59,3 +59,69 @@
   visibility: visible;
 }
 
+.gallery-container {
+  .product-images {
+    width: 90%;
+  }
+
+}
+
+.product-single__swatches .product-swatch {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2.5rem;
+  margin-bottom: 1.875rem; }
+@media (max-width: 1499.98px) {
+  .product-single__swatches .product-swatch {
+    gap: 1rem; } }
+.product-single__swatches .product-swatch > label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  min-width: 3rem;
+  text-transform: uppercase; }
+.product-single__swatches .product-swatch .swatch-list {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem; }
+.product-single__swatches .product-swatch .swatch-list > input[type="radio"] {
+  display: none; }
+.product-single__swatches .product-swatch .sizeguide-link {
+  margin-left: auto;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 1.875rem;
+  position: relative; }
+@media (max-width: 1499.98px) {
+  .product-single__swatches .product-swatch .sizeguide-link {
+    margin-left: 0; } }
+.product-single__swatches .product-swatch .sizeguide-link:before {
+  content: '';
+  border-bottom: 2px solid;
+  display: block;
+  width: 0;
+  transition: all .3s ease;
+  position: absolute;
+  left: 0;
+  bottom: 0; }
+.product-single__swatches .product-swatch .sizeguide-link:hover:before {
+  width: 100%; }
+.product-single__swatches .product-swatch .swatch {
+  transition: all .3s ease; }
+.product-single__swatches .product-swatch.text-swatches .swatch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.875rem;
+  border: 1px solid #e4e4e4;
+  padding: 0 0.8125rem; }
+.product-single__swatches .product-swatch.text-swatches .swatch.swatch_active, .product-single__swatches .product-swatch.text-swatches .swatch:hover {
+  border-color: #222222; }
+.product-single__swatches .product-swatch.text-swatches input[type="radio"]:checked + label {
+  border-color: #222222; }
+.product-single__swatches .product-swatch.color-swatches .swatch-color {
+  margin: 0;
+  border: 2px solid transparent; }
+.product-single__swatches .product-swatch.color-swatches .swatch-color.swatch_active, .product-single__swatches .product-swatch.color-swatches .swatch-color:hover {
+  border-color: #222222; }

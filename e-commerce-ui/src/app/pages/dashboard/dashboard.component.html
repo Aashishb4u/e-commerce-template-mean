@@ -2,74 +2,179 @@
 <div class="bg-white d-flex flex-column">
   <div class="px-xl-5 px-md-3 px-lg-3 px-xs-2">
     <div class="my-4 position-relative">
-      <div class="row w-100 p-4">
-        <div class="d-flex align-items-center justify-content-md-between flex-wrap mb-3 mb-xl-4">
-          <h1 class="section-title theme-color text-uppercase"><strong>My Account</strong></h1>
-        </div>
-        <div class="d-flex flex-column col-xl-3 col-lg-3">
+      <div class="row w-100 p-4" style="min-height: 100vh;">
+        <div class="position-sticky d-flex flex-column col-xl-3 col-lg-3">
+          <div class="d-flex align-items-center justify-content-md-between flex-wrap mb-3 mb-xl-4">
+            <h1 class="section-title theme-color text-uppercase"><strong>My Account</strong></h1>
+          </div>
           <ul class="border-0 nav nav-tabs account-nav">
-            <li class="mb-2 w-100 cursor-pointer nav-item"
-                id="collections-tab-1-trigger" data-bs-toggle="tab" href="#collections-tab-1" role="tab"
-                aria-controls="collections-tab-1" aria-selected="true">
-              <a class="uppercase inline-block nav-link nav-link_underscore active menu-link menu-link_us-s menu-link_active">Orders</a>
+            <li (click)="viewMode = 'orders'" class="mb-2 w-100 cursor-pointer nav-item">
+              <a
+                class="border-none border-0 uppercase inline-block nav-link nav-link_underscore {{viewMode === 'orders' ? 'active' : ''}} menu-link menu-link_us-s menu-link_active">Orders</a>
             </li>
-            <li class="mb-2 w-100 cursor-pointer nav-item"
-                id="collections-tab-2-trigger" data-bs-toggle="tab" href="#collections-tab-2" role="tab"
-                aria-controls="collections-tab-2" aria-selected="true" >
-              <a class="uppercase inline-block nav-link nav-link_underscore menu-link menu-link_us-s menu-link_active">Account Details</a>
+            <li (click)="viewMode = 'address'" class="mb-2 w-100 cursor-pointer nav-item">
+              <a
+                class="border-none border-0 uppercase inline-block nav-link nav-link_underscore {{viewMode === 'address' ? 'active' : ''}} menu-link menu-link_us-s menu-link_active">ADDRESSES</a>
             </li>
-            <li class="mb-2 w-100 cursor-pointer nav-item"
-                id="collections-tab-3-trigger" data-bs-toggle="tab" href="#collections-tab-3" role="tab"
-                aria-controls="collections-tab-3" aria-selected="true">
-              <a class="uppercase inline-block nav-link nav-link_underscore menu-link menu-link_us-s menu-link_active">Log Out</a>
+            <li (click)="viewMode = 'account'" class="mb-2 w-100 cursor-pointer nav-item">
+              <a
+                class="border-none border-0 uppercase inline-block nav-link nav-link_underscore {{viewMode === 'account' ? 'active' : ''}} menu-link menu-link_us-s menu-link_active">ACCOUNT
+                DETAILS</a>
+            </li>
+            <li (click)="viewMode = 'product'" class="mb-2 w-100 cursor-pointer nav-item">
+              <a
+                class="border-none border-0 uppercase inline-block nav-link nav-link_underscore {{viewMode === 'product' ? 'active' : ''}} menu-link menu-link_us-s menu-link_active">Product
+                Details</a>
+            </li>
+            <li (click)="onLogout()" class="mb-2 w-100 cursor-pointer nav-item">
+              <a
+                class="border-none border-0 uppercase inline-block nav-link nav-link_underscore {{viewMode === 'logout' ? 'active' : ''}} menu-link menu-link_us-s menu-link_active">Log
+                Out</a>
             </li>
           </ul>
         </div>
-        <div class="tab-content-container col-xl-9 col-lg-9">
-          <div class="tab-pane fade show active" id="collections-tab-1" role="tabpanel"
-               aria-labelledby="collections-tab-1-trigger">
-            <table class="table table-bordered">
-              <thead class="thead-dark">
-              <tr>
-                <th class="uppercase text-sm p-3" style="background: #e4e4e4">ORDER</th>
-                <th class="uppercase text-sm p-3" style="background: #e4e4e4">DATE</th>
-                <th class="uppercase text-sm p-3" style="background: #e4e4e4">STATUS</th>
-                <th class="uppercase text-sm p-3" style="background: #e4e4e4">TOTAL</th>
-                <th class="uppercase text-sm p-3" style="background: #e4e4e4">ACTIONS</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td class="p-3"><u>#2416</u></td>
-                <td class="p-3">October 1, 2023</td>
-                <td class="p-3">On hold	</td>
-                <td class="p-3">$1,200.65 for 3 items</td>
-                <td class="p-3">
-                  <button class="btn theme-btn">View</button>
-                </td>
-              </tr>
-              <tr>
-                <td class="p-3"><u>#2416</u></td>
-                <td class="p-3">October 1, 2023</td>
-                <td class="p-3">On hold	</td>
-                <td class="p-3">$1,200.65 for 3 items</td>
-                <td class="p-3">
-                  <button class="btn theme-btn">View</button>
-                </td>
-              </tr>
-              </tbody>
-            </table>
+        <div [ngSwitch]="viewMode" class="tab-content-container col-xl-9 col-lg-9">
+          <!-- Pagination -->
+
+          <!-- End Pagination -->
+          <div *ngSwitchCase="'orders'" class="animate__animated animate__fadeIn">
+            <app-orders></app-orders>
           </div>
-          <div class="tab-pane fade show" id="collections-tab-2" role="tabpanel"
-               aria-labelledby="collections-tab-2-trigger">
-            Hey
+          <div *ngSwitchCase="'address'" class="animate__animated animate__fadeIn">
+            <app-address-details></app-address-details>
           </div>
-          <div class="tab-pane fade show" id="collections-tab-3" role="tabpanel"
-               aria-labelledby="collections-tab-3-trigger">
-            Hey
+          <div *ngSwitchCase="'account'" class="animate__animated animate__fadeIn">
+            <app-account-details></app-account-details>
+          </div>
+          <div *ngSwitchCase="'logout'" class="animate__animated animate__fadeIn"></div>
+          <div *ngSwitchCase="'product'" class="animate__animated animate__fadeIn">
+            <app-product-details></app-product-details>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<!--<div *ngIf="showOrders"-->
+<!--     class="backdrop-brightness-50 animate__animated animate__fadeIn animate__faster overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">-->
+<!--  <div class="relative w-9/12 my-6 mx-auto max-w-7xl">-->
+<!--    &lt;!&ndash;content&ndash;&gt;-->
+<!--    <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">-->
+<!--      &lt;!&ndash;header&ndash;&gt;-->
+<!--      <div class="d-flex flex-column items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">-->
+<!--        <div class="d-flex align-items-center w-100 justify-content-between">-->
+<!--          <h5 class="m-0 text-xl font-semibold">-->
+<!--            Order Details-->
+<!--          </h5>-->
+<!--          <button-->
+<!--            class="p-1 ml-auto bg-transparent border-0 text-black opacity-3 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"-->
+<!--            (click)="showOrders = !showOrders">-->
+<!--            <i class="text-base fa fa-times"></i>-->
+<!--          </button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      &lt;!&ndash;body&ndash;&gt;-->
+<!--      <div class="relative p-6 flex-auto">-->
+<!--        <div>-->
+<!--          <div class="row col-12">-->
+<!--            <div class="col-7">-->
+<!--              <div class="d-flex gap-3">-->
+<!--                <img alt="" class="border-1 rounded p-2 h-100 object-fit-cover"-->
+<!--                     style="width: 100px;" src="assets/products/product_1.png">-->
+<!--                <div class="d-flex flex-column gap-2">-->
+<!--                  <div>Chain Clean Degeaser</div>-->
+<!--                  <div class="d-flex gap-1 flex-column text-gray-500">-->
+<!--                    <div>Quantity: 5</div>-->
+<!--                    <div>Size: 400ml</div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="col-5 text-right">-->
+<!--              ₹ 67.00-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <hr class="text-gray-400 my-3">-->
+<!--          <div class="row col-12">-->
+<!--            <div class="col-7">-->
+<!--              <div class="d-flex gap-3">-->
+<!--                <img alt="" class="border-1 rounded p-2 h-100 object-fit-cover"-->
+<!--                     style="width: 100px;" src="assets/products/product_1.png">-->
+<!--                <div class="d-flex flex-column gap-2">-->
+<!--                  <div>Chain Clean Degeaser</div>-->
+<!--                  <div class="d-flex gap-1 flex-column text-gray-500">-->
+<!--                    <div>Quantity: 5</div>-->
+<!--                    <div>Size: 400ml</div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="col-5 text-right">-->
+<!--              ₹ 67.00-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <hr class="text-gray-400 my-3">-->
+<!--          <div class="row col-12">-->
+<!--            <div class="col-7">-->
+<!--              <div class="d-flex gap-3">-->
+<!--                <img alt="" class="border-1 rounded p-2 h-100 object-fit-cover"-->
+<!--                     style="width: 100px;" src="assets/products/product_1.png">-->
+<!--                <div class="d-flex flex-column gap-2">-->
+<!--                  <div>Chain Clean Degeaser</div>-->
+<!--                  <div class="d-flex gap-1 flex-column text-gray-500">-->
+<!--                    <div>Quantity: 5</div>-->
+<!--                    <div>Size: 400ml</div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="col-5 text-right">-->
+<!--              ₹ 67.00-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <hr class="text-gray-400 my-3">-->
+<!--        </div>-->
+<!--        <div class="row col-12">-->
+<!--          <div class="col-7">-->
+
+<!--          </div>-->
+<!--          <div class="col-5">-->
+<!--            <div class="row mb-2 row-cols-2 d-flex justify-center">-->
+<!--              <div>SubTootal:</div>-->
+<!--              <div class="text-right">$40.00</div>-->
+<!--            </div>-->
+<!--            <div class="row mb-2 row-cols-2 d-flex justify-center">-->
+<!--              <div>Shipping Cost:</div>-->
+<!--              <div class="text-right">$10.00</div>-->
+<!--            </div>-->
+<!--            <div class="row mb-2 row-cols-2 d-flex justify-center">-->
+<!--              <div class="text-green-500">Discount:</div>-->
+<!--              <div class="text-right">$5.00</div>-->
+<!--            </div>-->
+<!--            <hr class="text-gray-400 my-3">-->
+<!--            <div class="row mb-2 row-cols-2 d-flex justify-center">-->
+<!--              <div class="font-bold">Total:</div>-->
+<!--              <div class="text-right">$40.00</div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--      </div>-->
+<!--      &lt;!&ndash;footer&ndash;&gt;-->
+<!--      <div class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">-->
+<!--        <button-->
+<!--          class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"-->
+<!--          type="button" (click)="showOrders = !showOrders">-->
+<!--          Close-->
+<!--        </button>-->
+<!--        <button-->
+<!--          class="bg-blue-600 text-white active:bg-blue-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"-->
+<!--          type="button" (click)="showOrders = !showOrders">-->
+<!--          Save Changes-->
+<!--        </button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+

@@ -115,10 +115,8 @@ export class LandingComponent implements OnInit {
 
   ngOnInit() {
     this.sharedService.categories.subscribe((res: any) => {
-      console.log(res);
-      this.bullets = res;
-      console.log(this.bullets);
-    })
+      this.bullets = res.children;
+    });
   }
 
   onSelectCategory(val: any) {

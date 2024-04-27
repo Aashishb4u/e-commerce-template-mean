@@ -1,0 +1,214 @@
+<ng-container *ngIf="!editMode; else editForm">
+  <div class="my-3">
+    <div class="d-flex align-items-center mb-3 justify-content-between">
+      <div class="d-flex gap-3">
+        <div class="form-floating my-3 mb-3">
+          <select id="category" class="form-control">
+            <ng-container *ngFor="let cat of categories">
+              <option [value]="cat.name">{{cat.name | titlecase}}</option>
+            </ng-container>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M5 8l5 5 5-5H5z"/>
+            </svg>
+          </div>
+          <label for="category">Category</label>
+        </div>
+        <div class="form-floating my-3 mb-3">
+          <input type="text" class="form-control" id="product_name" placeholder="First Name"
+                 required="">
+          <label for="product_name">Search</label>
+        </div>
+      </div>
+      <div class="d-flex gap-2 align-items-center">
+        <button (click)="editMode = true; loadCkEditor()"
+                class="bg-blue-600 text-white active:bg-blue-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                type="button">
+          Add <i class="fa fa-plus"></i>
+        </button>
+
+      </div>
+    </div>
+    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-3 row-cols-xxl-4">
+      <div *ngFor="let product of products | paginate: { itemsPerPage: 3, currentPage: productPage }" class="product-card-wrapper cursor-pointer mb-2">
+        <div
+          class="hover:brightness-95 product-card product-card_style9 border rounded-3 mb-3 mb-md-4 bg-white">
+          <div class="position-relative pb-4 p-2">
+            <div class="">
+              <img class="w-100 object-fit-cover" loading="lazy" [src]="product.img" width="255"
+                   height="200"
+                   alt="Cropped Faux leather Jacket">
+            </div>
+            <div class="anim_appear-bottom position-absolute w-100 text-center">
+              <button (click)="onEditProduct(product)" class="btn btn-primary">
+                <i class="fa fa-pencil"></i>
+              </button>
+            </div>
+          </div>
+          <div class="pc__info position-relative">
+            <p class="pc__category text-sm fs-13 fw-medium">{{product?.cat}}</p>
+            <h6 class="pc__title fs-16 mb-2"><a href="./product1_simple.html">{{product?.name}}</a></h6>
+            <div class="product-card__review d-sm-flex align-items-center">
+              <div class="reviews-group d-flex">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+              <span
+                class="reviews-note text-lowercase text-secondary fs-13 ms-sm-1">{{product?.ratings}}</span>
+            </div>
+            <div class="my-2 text-gray-500">
+              Without JobHunt i’d be homeless, they found me a job and got me sorted out quickly with
+              everything!
+              Can’t quite.
+            </div>
+            <div class="d-flex mt-4 gap-1 align-items-center">
+              <span class="product-card__price price fs-16 fw-semi-bold">{{product?.price}}</span> <span
+              class="text-gray-400">/ 400 ml</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-end">
+      <div class="pagination-tab flex justify-end">
+        <pagination-controls class="my-custom-pagination"
+                             (pageChange)="productPage = $event">
+
+        </pagination-controls>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-template #editForm>
+  <div class="animate__animated animate__fadeIn my-account__edit-form">
+    <form name="mb-3 account_edit_form" class="needs-validation" novalidate="">
+      <div class="d-flex justify-content-between mb-6">
+        <div class="my-3 mb-3">
+          <h5 class="text-uppercase mb-0 text-lg font-bold">Add Product Details</h5>
+        </div>
+        <div class="my-3 mb-3 gap-2 d-flex">
+          <!--                      <button class="btn btn-secondary" (click)="editMode = false; $event.preventDefault()">-->
+          <!--                        Back-->
+          <!--                      </button>-->
+          <button
+            class="bg-gray-500 text-white active:bg-gray-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+            type="button" (click)="editMode = false; $event.preventDefault()">
+            Back
+          </button>
+          <button
+            class="bg-blue-600 text-white active:bg-blue-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+            type="button" (click)="editMode = false; $event.preventDefault()">
+            Save Changes
+          </button>
+          <!--                      <button class="btn btn-primary" (click)="editMode = false; $event.preventDefault()">-->
+          <!--                        Save Changes-->
+          <!--                      </button>-->
+        </div>
+      </div>
+      <div>
+        <div class="row">
+          <div class="col-md-7 mb-3">
+            <div class="form-floating my-3 mb-3">
+              <input type="text" class="form-control" id="product_name" placeholder="First Name"
+                     required="">
+              <label for="product_name">Product Name</label>
+            </div>
+          </div>
+          <div class="col-md-4 mb-2">
+            <div class="form-floating my-3 mb-3">
+              <select id="cat" class="form-control">
+                <ng-container *ngFor="let cat of categories">
+                  <option [value]="cat.name">{{cat.name | titlecase}}</option>
+                </ng-container>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                  <path d="M5 8l5 5 5-5H5z"/>
+                </svg>
+              </div>
+              <label for="cat">Category</label>
+            </div>
+          </div>
+          <div class="col-md-3 mb-2">
+            <div class="form-floating my-3 mb-3 relative">
+              <select id="quantity" class="text-sm form-control appearance-none">
+                <ng-container *ngFor="let quantityOption of ['250 Ml', '500 Ml', '1 Ltr', '5 Ltr', '25 Ltr', '50 Ltr', '100 Ltr']">
+                  <option [value]="quantityOption.split(' ')[0]">{{quantityOption}}</option>
+                </ng-container>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                  <path d="M5 8l5 5 5-5H5z"/>
+                </svg>
+              </div>
+              <label for="quantity">Quantity</label>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="form-floating my-3 mb-3">
+              <input type="number" class="form-control" id="price_amount" placeholder="Display Name"
+                     required="">
+              <label for="price_amount">Price</label>
+            </div>
+          </div>
+          <div class="col-md-3 mb-2">
+            <div class="form-floating my-3 mb-3">
+              <input type="number" class="form-control" id="reviews" placeholder="Reviews"
+                     required="">
+              <label for="reviews">Reviews</label>
+            </div>
+          </div>
+          <div class="row px-6 col-md-12 gap-4 mb-6">
+            <div class="col-md-2 border-1 rounded py-3 shadow">
+              <img src="assets/products/product_1.png" alt="">
+            </div>
+            <div class="col-md-2 border-1 rounded py-3 shadow">
+              <img src="assets/products/product_1.png" alt="">
+            </div>
+            <div class="col-md-2 border-1 rounded py-3 shadow">
+              <img src="assets/products/product_1.png" alt="">
+            </div>
+            <div class="col-md-2 border-1 rounded py-3 shadow">
+              <img src="assets/products/product_1.png" alt="">
+            </div>
+            <div class="col-md-2 border-1 rounded py-3 shadow">
+              <img src="assets/products/product_1.png" alt="">
+            </div>
+            <div class="cursor-pointer col-md-2 border-1 rounded py-3 shadow">
+              <div class="w-100 d-flex justify-content-center p-4">
+                <img style="width: 50px" src="assets/icons/add.png" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-11 mb-3">
+            <div class="form-floating my-3 mb-3">
+                      <textarea style="height: 200px" type="text" class="form-control" id="description"
+                                placeholder="Display Name" required=""></textarea>
+              <label for="description">Description</label>
+            </div>
+          </div>
+          <div class="col-md-11 mb-3">
+            <label class="mb-3 mt-4 text-base">Benefits</label>
+            <div style="min-height: 200px" class="editor"></div>
+          </div>
+          <div class="col-md-11 mb-3">
+            <label class="mb-3 mt-4 text-base">Usage</label>
+            <div style="min-height: 200px" class="editor"></div>
+          </div>
+          <div class="col-md-11 mb-3">
+            <label class="mb-3 mt-4 text-base">Dosage</label>
+            <div style="min-height: 200px" class="editor"></div>
+          </div>
+          <div class="col-md-11 mb-3">
+            <label class="mb-3 mt-4 text-base">Direction</label>
+            <div style="min-height: 200px" class="editor"></div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>

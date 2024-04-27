@@ -23,6 +23,8 @@ export class SharedService {
   businessLogoImageLink: any = '';
   showCart = new BehaviorSubject(false);
   showLogin = new BehaviorSubject(false);
+  showLogout = new BehaviorSubject(false);
+  doLogout = new BehaviorSubject(false);
   categories = new BehaviorSubject([]);
   constructor() { }
 }

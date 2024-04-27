@@ -1,1 +1,111 @@
-<p>login-register works!</p>
+<app-header></app-header>
+<div class="login-container">
+  <ng-container *ngIf="loginEnabled; else registerEnabled">
+    <form [formGroup]="loginForm" class="login-form" (submit)="onSubmit()" (keydown.enter)="onSubmit()">
+      <div class="d-flex justify-content-center logo-container">
+        <img [src]="sharedService.companyLogoTransperant" alt="Company Logo" class="logo-image">
+      </div>
+
+      <div class="col-md-12 mb-8">
+        <div class="form-floating my-3 mb-3">
+          <input type="text" class="form-control" id="email"
+                 placeholder="Current password" required="">
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <div class="col-md-12 mb-8">
+        <div class="form-floating my-3 mb-3">
+          <input type="password" class="form-control" id="password"
+                 placeholder=" password" required="">
+          <label for="password">Password</label>
+        </div>
+      </div>
+      <!--    <mat-form-field appearance="outline" class="form-field mat-large">-->
+      <!--      <mat-label>Email</mat-label>-->
+      <!--      <input tabindex="1" matInput formControlName="email" type="email" placeholder="Enter your email">-->
+      <!--      <mat-error *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">Please enter a valid email</mat-error>-->
+      <!--    </mat-form-field>-->
+
+      <!--    <mat-form-field appearance="outline" class="mat-large form-field">-->
+      <!--      <mat-label>Password</mat-label>-->
+      <!--      <input tabindex="2" maxlength="30" matInput formControlName="password" class="mat-large" type="password" placeholder="Enter your password">-->
+      <!--      <mat-error *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">Please enter a password</mat-error>-->
+      <!--    </mat-form-field>-->
+
+      <div class="d-flex mt-10 justify-content-between align-items-center">
+        <button mat-button color="primary" (click)="loginEnabled = !loginEnabled">Forgot Password?</button>
+        <!--      <button mat-raised-button color="primary" tabindex="3" type="submit">Login</button>-->
+        <button
+          class="bg-blue-600 text-white active:bg-blue-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          type="submit">
+          Login
+        </button>
+      </div>
+    </form>
+  </ng-container>
+
+  <ng-template #registerEnabled>
+    <form [formGroup]="loginForm" class="login-form" (submit)="onSubmit()" (keydown.enter)="onSubmit()">
+<!--      <div class="d-flex justify-content-center logo-container">-->
+<!--        <img [src]="sharedService.companyLogoTransperant" alt="Company Logo" class="logo-image">-->
+<!--      </div>-->
+
+      <div class="col-md-12 mb-8">
+        <div class="form-floating my-3 mb-3">
+          <input type="text" class="form-control" id="firstName"
+                 placeholder="First Name" required="">
+          <label for="firstName">First Name</label>
+        </div>
+      </div>
+      <div class="col-md-12 mb-8">
+        <div class="form-floating my-3 mb-3">
+          <input type="text" class="form-control" id="lastName"
+                 placeholder="Last Name" required="">
+          <label for="lastName">Last Name</label>
+        </div>
+      </div>
+      <div class="col-md-12 mb-8">
+        <div class="form-floating my-3 mb-3">
+          <input type="email" class="form-control" id="email_1"
+                 placeholder="Email" required="">
+          <label for="email_1">Email</label>
+        </div>
+      </div>
+      <div class="col-md-12 mb-8">
+        <div class="form-floating my-3 mb-3">
+          <input type="password" class="form-control" id="password_1"
+                 placeholder="Password" required="">
+          <label for="password_1">Password</label>
+        </div>
+      </div>
+      <div class="col-md-12 mb-8">
+        <div class="form-floating my-3 mb-3">
+          <input type="password" class="form-control" id="confirmPassword"
+                 placeholder="Confirm Password" required="">
+          <label for="confirmPassword">Confirm Password</label>
+        </div>
+      </div>
+      <!--    <mat-form-field appearance="outline" class="form-field mat-large">-->
+      <!--      <mat-label>Email</mat-label>-->
+      <!--      <input tabindex="1" matInput formControlName="email" type="email" placeholder="Enter your email">-->
+      <!--      <mat-error *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">Please enter a valid email</mat-error>-->
+      <!--    </mat-form-field>-->
+
+      <!--    <mat-form-field appearance="outline" class="mat-large form-field">-->
+      <!--      <mat-label>Password</mat-label>-->
+      <!--      <input tabindex="2" maxlength="30" matInput formControlName="password" class="mat-large" type="password" placeholder="Enter your password">-->
+      <!--      <mat-error *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">Please enter a password</mat-error>-->
+      <!--    </mat-form-field>-->
+
+      <div class="d-flex mt-10 justify-content-between align-items-center">
+        <button mat-button color="primary" (click)="loginEnabled = !loginEnabled">Login</button>
+        <!--      <button mat-raised-button color="primary" tabindex="3" type="submit">Login</button>-->
+        <button
+          class="bg-blue-600 text-white active:bg-blue-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          type="submit">
+          Register
+        </button>
+      </div>
+    </form>
+  </ng-template>
+</div>

@@ -44,13 +44,6 @@ export class AppHeaderComponent implements OnInit {
     this._location.back();
   }
 
-  logout() {
-    this.apiService.logout().subscribe((res) => {
-      this.apiService.showToast(res.message);
-      this.router.navigate(['/login']);
-    });
-  }
-
   onChangePassword() {
     this.router.navigate(['/change-password']);
   }
@@ -66,5 +59,10 @@ export class AppHeaderComponent implements OnInit {
 
   showCart() {
     this.sharedService.showCart.next(true);
+  }
+
+  togglePopup() {
+    const toggleStatus = this.sharedService.showLogout.value;
+    this.sharedService.showLogout.next(!toggleStatus);
   }
 }

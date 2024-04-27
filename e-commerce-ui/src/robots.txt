@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /home
+Allow: /about
+Allow: /services
+Allow: /works
+Allow: /blogs
+Allow: /contact

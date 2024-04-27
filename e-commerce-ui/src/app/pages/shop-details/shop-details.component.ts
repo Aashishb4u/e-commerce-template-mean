@@ -7,6 +7,7 @@ import {SharedService} from "../../services/shared.service";
   styleUrl: './shop-details.component.scss'
 })
 export class ShopDetailsComponent {
+  tabName: any = 'benefits';
   constructor(public sharedService: SharedService) {
   }
 
@@ -52,55 +53,69 @@ export class ShopDetailsComponent {
   products: any = [
     {
       name: "Chain Clean Degeaser",
-      img: "assets/products/product_1.png",
+      img: "assets/products/demo_1.png",
       cat: "Grease",
       ratings: "321,546",
       price: "$35.90"
     },
     {
       name: "Radiator Flush & Clean",
-      img: "assets/products/product_2.png",
+      img: "assets/products/demo_2.png",
       cat: "Additives",
       ratings: "321,546",
       price: "$35.90"
     },
     {
       name: "Hydro Finish Restorer Polish",
-      img: "assets/products/product_3.png",
+      img: "assets/products/demo_3.png",
       cat: "Cleaner",
       ratings: "321,546",
       price: "$35.90"
     },
     {
       name: "Valve & Injector Cleaner",
-      img: "assets/products/product_4.png",
+      img: "assets/products/demo_4.png",
       cat: "Cleaner",
       ratings: "321,546",
       price: "$35.90"
     }, {
       name: "Chain Clean Degeaser",
-      img: "assets/products/product_1.png",
+      img: "assets/products/demo_5.png",
       cat: "Grease",
       ratings: "321,546",
       price: "$35.90"
     },
     {
       name: "Radiator Flush & Clean",
-      img: "assets/products/product_2.png",
+      img: "assets/products/demo_6.png",
       cat: "Additives",
       ratings: "321,546",
       price: "$35.90"
     },
     {
       name: "Hydro Finish Restorer Polish",
-      img: "assets/products/product_3.png",
+      img: "assets/products/demo_7.png",
       cat: "Cleaner",
       ratings: "321,546",
       price: "$35.90"
     },
     {
       name: "Valve & Injector Cleaner",
-      img: "assets/products/product_4.png",
+      img: "assets/products/demo_8.png",
+      cat: "Cleaner",
+      ratings: "321,546",
+      price: "$35.90"
+    },
+    {
+      name: "Hydro Finish Restorer Polish",
+      img: "assets/products/demo_9.png",
+      cat: "Cleaner",
+      ratings: "321,546",
+      price: "$35.90"
+    },
+    {
+      name: "Valve & Injector Cleaner",
+      img: "assets/products/demo_10.png",
       cat: "Cleaner",
       ratings: "321,546",
       price: "$35.90"

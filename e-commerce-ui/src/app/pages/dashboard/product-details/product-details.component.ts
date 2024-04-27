@@ -1,19 +1,17 @@
-import {AfterViewInit, ChangeDetectorRef, Component, Inject, OnInit, PLATFORM_ID, Renderer2} from '@angular/core';
+import {ChangeDetectorRef, Component, Inject, PLATFORM_ID, Renderer2} from '@angular/core';
 import {DOCUMENT, isPlatformBrowser} from "@angular/common";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import {SharedService} from "../../services/shared.service";
+import {SharedService} from "../../../services/shared.service";
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.scss'
+  selector: 'app-product-details',
+  templateUrl: './product-details.component.html',
+  styleUrl: './product-details.component.scss'
 })
-export class DashboardComponent implements OnInit {
-  p: any = 1;
-  productPage: any = 1;
-  title = 'angular';
-  showLogOut: any = false;
-  viewMode: any = 'orders';
+export class ProductDetailsComponent {
+  editMode = false;
+  isBrowser = false;
+  ckEditorData: any;
+  categories: any = [];
   products: any = [
     {
       name: "Chain Clean Degeaser 1",
@@ -72,11 +70,8 @@ export class DashboardComponent implements OnInit {
       price: "$35.90"
     }
   ];
-  ckEditorLoaded = false;
-  Editor: any;
-  isBrowser = false;
-  ckEditorData: any;
-  categories: any = [];
+  productPage: any = 1;
+
   constructor(
     private _renderer2: Renderer2,
     @Inject(DOCUMENT) private _document,
@@ -84,15 +79,38 @@ export class DashboardComponent implements OnInit {
     public sharedService: SharedService,
     private cdr: ChangeDetectorRef) {
     this.isBrowser = isPlatformBrowser(platformId);
+    this.sharedService.categories.subscribe((res: any) => {
+      this.categories = res.children;
+    });
+  }
+  onEditProduct(product) {
+    this.editMode = true;
+    this.loadCkEditor();
   }
 
-
-  ngOnInit() {
-
-  }
-
-
-  onLogout() {
-    this.sharedService.showLogout.next(true);
+  loadCkEditor() {
+    const script = this._renderer2.createElement('script');
+    script.type = 'application/javascript';
+    script.src = 'https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js';
+    script.onload = () => {
+      const CKEditor = (window as any).ClassicEditor;
+      const editorElements = document.querySelectorAll('.editor');
+      console.log(editorElements);
+      editorElements.forEach((editorElement) => {
+        if (editorElement) {
+          CKEditor.create(editorElement, {
+          }).then(editor => {
+            editor.model.document.on('change', () => {
+              this.ckEditorData = JSON.stringify(editor.getData());
+            });
+          }).catch(error => {
+            console.error('Error initializing CKEditor:', error);
+          });
+        } else {
+          console.error('#editor element not found');
+        }
+      });
+    };
+    this._renderer2.appendChild(this._document.body, script);
   }
 }

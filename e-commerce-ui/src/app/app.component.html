@@ -64,3 +64,43 @@
 <router-outlet></router-outlet>
 </mat-drawer-container>
 <app-footer></app-footer>
+
+<div *ngIf="sharedService.showLogout | async"
+     class="backdrop-brightness-50 animate__animated animate__fadeIn animate__faster overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
+  <div class="relative my-6 mx-auto w-2/5 max-w-6xl">
+    <!--content-->
+    <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+      <!--header-->
+      <div class="d-flex flex-column items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+        <div class="d-flex align-items-center w-100 justify-content-between">
+          <h5 class="m-0 text-xl font-semibold">
+            Confirmation
+          </h5>
+          <button
+            class="p-1 ml-auto bg-transparent border-0 text-black opacity-3 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+            (click)="togglePopup()">
+            <i class="text-base fa fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <!--body-->
+      <div class="relative p-6 flex-auto">
+        Do you want to Log out?
+      </div>
+      <!--footer-->
+      <div class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+        <button
+          class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          type="button" (click)="togglePopup()">
+          Cancel
+        </button>
+        <button
+          class="bg-blue-600 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          type="button" (click)="confirm()">
+          Confirm
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

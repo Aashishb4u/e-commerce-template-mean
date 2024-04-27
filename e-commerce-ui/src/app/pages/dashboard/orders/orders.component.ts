@@ -6,5 +6,50 @@ import { Component } from '@angular/core';
   styleUrl: './orders.component.scss'
 })
 export class OrdersComponent {
+  showOrders: any = false;
+  orders: any = [
+    {
+      id: "#1234",
+      date: "3 October 2024",
+      status: "on Hold",
+      price: "$120",
+      quantity: "3"
+    },
+    {
+      id: "#1234",
+      date: "3 October 2024",
+      status: "on Hold",
+      price: "$120",
+      quantity: "3"
+    },
+    {
+      id: "#1234",
+      date: "3 October 2024",
+      status: "on Hold",
+      price: "$120",
+      quantity: "3"
+    },
+    {
+      id: "#1234",
+      date: "3 October 2024",
+      status: "on Hold",
+      price: "$120",
+      quantity: "3"
+    },
+    {
+      id: "#1234",
+      date: "3 October 2024",
+      status: "on Hold",
+      price: "$120",
+      quantity: "3"
+    },
+    {
+      id: "#1234",
+      date: "3 October 2024",
+      status: "on Hold",
+      price: "$120",
+      quantity: "3"
+    }
+  ];
 
 }

@@ -1,1 +1,200 @@
-<p>orders works!</p>
+<ng-container *ngIf="!showOrders; else showOrdersTemplate">
+  <div class="pagination-tab flex justify-end">
+    <pagination-controls class="my-custom-pagination"
+                         (pageChange)="p = $event">
+
+    </pagination-controls>
+  </div>
+  <table class="table table-bordered">
+    <thead class="thead-dark">
+    <tr>
+      <th class="uppercase text-sm p-3" style="background: #e4e4e4">ORDER</th>
+      <th class="uppercase text-sm p-3" style="background: #e4e4e4">DATE</th>
+      <th class="uppercase text-sm p-3" style="background: #e4e4e4">STATUS</th>
+      <th class="uppercase text-sm p-3" style="background: #e4e4e4">TOTAL</th>
+      <th class="uppercase text-sm p-3" style="background: #e4e4e4">ACTIONS</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let order of orders | paginate: { itemsPerPage: 4, currentPage: p }">
+      <td class="p-3"><u>{{order.id}}</u></td>
+      <td class="p-3">{{order.date}}</td>
+      <td class="p-3">{{order.status}}</td>
+      <td class="p-3">{{order.price}} for {{order.quantity}} items</td>
+      <td class="p-3">
+        <button
+          class="bg-blue-600 text-white active:bg-blue-800 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          type="button" (click)="showOrders = !showOrders">
+          View
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</ng-container>
+
+<ng-template #showOrdersTemplate>
+  <div class="border-0 rounded-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+    <!--header-->
+    <div class="d-flex flex-column items-start justify-between py-5 border-b border-solid border-blueGray-200 rounded-t">
+      <div class="d-flex align-items-center w-100 justify-content-between">
+        <h5 class="m-0 text-xl font-semibold">
+          Order Details
+        </h5>
+        <div class="d-flex gap-2">
+          <button
+            class="bg-gray-500 text-white active:bg-gray-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+            type="button" (click)="showOrders = !showOrders">
+            Back
+          </button>
+          <button
+            class="bg-blue-600 text-white active:bg-blue-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+            type="button" (click)="showOrders = !showOrders">
+            Save Changes
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="my-3 row row-cols-4">
+      <div class="d-flex gap-1 flex-column">
+        <div class="text-gray-400">Order Date</div>
+        <div class="text-black text-base">
+          <div class="my-2 mb-3">
+            <input type="text" class="form-control text-sm bg-gray-100" placeholder="Last Name" value="01 Dec 2023"
+                   required="">
+          </div>
+        </div>
+      </div>
+      <div class="d-flex gap-1 flex-column">
+        <div class="text-gray-400">Order Id</div>
+        <div class="text-black text-base">
+          <div class="my-2 mb-3">
+            <input type="text" class="form-control text-sm bg-gray-100" placeholder="Last Name" value="#12345"
+                   required="">
+          </div>
+        </div>
+      </div>
+      <div class="d-flex gap-1 flex-column">
+        <div class="text-gray-400">Payment Method</div>
+        <div class="text-black text-base">
+          <div class="my-2 mb-3">
+            <input type="text" class="form-control text-sm bg-gray-100" placeholder="Last Name" value="Google Pay"
+                   required="">
+          </div>
+        </div>
+      </div>
+      <div class="d-flex gap-1 flex-column">
+        <div class="text-gray-400">Status</div>
+        <div class="text-black text-base">
+          <div class="my-2 mb-3">
+            <!--                        <input type="text" class="form-control text-sm bg-gray-100" placeholder="Last Name" value="Shipped"-->
+            <!--                               required="">-->
+            <div class="relative">
+              <select class="text-sm form-control appearance-none">
+                <ng-container *ngFor="let status of ['Shipped', 'Cancelled', 'Delivered', 'Initiated']">
+                  <option [value]="status">{{status | titlecase}}</option>
+                </ng-container>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                  <path d="M5 8l5 5 5-5H5z"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="text-gray-400 my-3">
+
+    <!--body-->
+    <div class="relative py-6 flex-auto">
+      <div>
+        <div class="row col-12">
+          <div class="col-7">
+            <div class="d-flex gap-3">
+              <img alt="" class="border-1 rounded p-2 h-100 object-fit-cover"
+                   style="width: 100px;" src="assets/products/product_1.png">
+              <div class="d-flex flex-column gap-2">
+                <div class="text-base">Chain Clean Degeaser</div>
+                <div class="d-flex gap-1 flex-column text-gray-500">
+                  <div class="text-gray-500">Quantity: 5</div>
+                  <div class="text-gray-500">Size: 400ml</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-5 text-right">
+            ₹ 67.00
+          </div>
+        </div>
+        <hr class="text-gray-400 my-3">
+        <div class="row col-12">
+          <div class="col-7">
+            <div class="d-flex gap-3">
+              <img alt="" class="border-1 rounded p-2 h-100 object-fit-cover"
+                   style="width: 100px;" src="assets/products/product_1.png">
+              <div class="d-flex flex-column gap-2">
+                <div class="text-base">Chain Clean Degeaser</div>
+                <div class="d-flex gap-1 flex-column text-gray-500">
+                  <div>Quantity: 5</div>
+                  <div>Size: 400ml</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-5 text-right">
+            ₹ 67.00
+          </div>
+        </div>
+        <hr class="text-gray-400 my-3">
+        <div class="row col-12">
+          <div class="col-7">
+            <div class="d-flex gap-3">
+              <img alt="" class="border-1 rounded p-2 h-100 object-fit-cover"
+                   style="width: 100px;" src="assets/products/product_1.png">
+              <div class="d-flex flex-column gap-2">
+                <div class="text-base">Chain Clean Degeaser</div>
+                <div class="d-flex gap-1 flex-column text-gray-500">
+                  <div>Quantity: 5</div>
+                  <div>Size: 400ml</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-5 text-right">
+            ₹ 67.00
+          </div>
+        </div>
+        <hr class="text-gray-400 my-3">
+      </div>
+      <div class="row col-12">
+        <div class="col-7">
+
+        </div>
+        <div class="col-5">
+          <div class="row mb-2 row-cols-2 d-flex justify-center">
+            <div>SubTotal</div>
+            <div class="text-right">₹ 40.00</div>
+          </div>
+          <div class="row mb-2 row-cols-2 d-flex justify-center">
+            <div>Shipping Cost</div>
+            <div class="text-right">₹ 10.00</div>
+          </div>
+          <div class="row mb-2 row-cols-2 d-flex justify-center">
+            <div class="text-green-500">Discount</div>
+            <div class="text-right">₹ 5.00</div>
+          </div>
+          <hr class="text-gray-400 my-3">
+          <div class="row mb-2 row-cols-2 d-flex justify-center">
+            <div class="font-bold">Total</div>
+            <div class="text-right">₹ 40.00</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!--footer-->
+
+  </div>
+</ng-template>

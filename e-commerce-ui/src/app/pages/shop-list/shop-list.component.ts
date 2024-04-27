@@ -11,6 +11,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class ShopListComponent implements OnInit {
   constructor(public Activatedroute: ActivatedRoute, public sharedService: SharedService, public apiService: ApiService) {
   }
+
   categoriesData: any = [];
   menus: any = [];
   products: any = [
@@ -70,27 +71,31 @@ export class ShopListComponent implements OnInit {
       price: "$35.90"
     }
   ];
+  params: any;
   title: any = "SHOP LIST";
   imageBanner: any = "assets/banners/oil-banner-3.png";
+
   ngOnInit() {
+    this.Activatedroute.queryParams.subscribe(params => {
+      this.params = params;
+      this.fetchData();
+    });
+  }
+
+  fetchData() {
     this.sharedService.categories.subscribe((res: any) => {
       this.categoriesData = res;
-      this.menus = this.categoriesData
-      this.Activatedroute.queryParams
-        .subscribe(params => {
-          console.log(params);
-          console.log(this.categoriesData);
-          const category = params['category'];
-          const categoryData = this.categoriesData.find(v => v.name.split(' ').join('_').toLowerCase() === category.toLowerCase());
-          this.menus = categoryData.children;
-          this.title = categoryData.name;
-          this.imageBanner = categoryData.img;
-        });
+      this.menus = this.categoriesData.children;
+      this.title = this.categoriesData.name;
+      this.imageBanner = this.categoriesData.img;
+      if (this.params && this.params['category'] && this.categoriesData.children && this.categoriesData.children.length) {
+        const category = this.params['category'];
+        const categoryData = this.categoriesData.children.find(v => v.name.split(' ').join('_').toLowerCase() === category.toLowerCase());
+        this.menus = categoryData.children;
+        this.title = categoryData.name;
+        this.imageBanner = categoryData.img;
+      }
     });
-    // this.router.queryParams.subscribe(res=>{
-    //   console.log(res) //will give query params as an object
-    // });
-
   }
 
   toggleCart() {

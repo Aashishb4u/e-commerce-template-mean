@@ -35,11 +35,7 @@ navbar-expand-md navbar-light bg-light">
               <mat-icon color="primary">home</mat-icon>
             </button>
             <button mat-menu-item
-                    (click)="onChangePassword()">Change Password
-              <mat-icon color="primary">lock</mat-icon>
-            </button>
-            <button mat-menu-item
-                    (click)="logout()">Log Out
+                    (click)="togglePopup()">Log Out
               <mat-icon color="primary">logout</mat-icon>
             </button>
           </ng-template>
@@ -56,7 +52,7 @@ navbar-expand-md navbar-light bg-light">
           <li [routerLink]="['/home']" [routerLinkActive]="'active'" class="nav-item nav-menu">
             <div class="cursor-pointer nav-link text-sm navigation__link" aria-current="page">Home</div>
           </li>
-          <li [routerLink]="['/shop-list']" class="nav-item nav-menu ">
+          <li [routerLink]="['/shop-list']" [routerLinkActive]="'active'" class="nav-item nav-menu ">
             <div class="cursor-pointer nav-link text-sm navigation__link">
               <div class="d-flex gap-1 justify-content-center align-items-center">
                 <span>Products </span>
@@ -87,7 +83,7 @@ navbar-expand-md navbar-light bg-light">
         </div>
       </div>
       <div *ngIf="isAuthenticated" class="cursor-pointer d-flex justify-content-end">
-        <div [matMenuTriggerFor]="userMenu" #menuTrigger class="d-flex justify-content-center align-items-center">
+        <div [matMenuTriggerFor]="userMenu" #menuTrigger class="d-flex justify-content-center gap-3 align-items-center">
           <div class="user-icon">
             <button mat-mini-fab class="mat-button-icon-btn m-r-1"
                     aria-label="Example icon button with a plus one icon">
@@ -103,11 +99,7 @@ navbar-expand-md navbar-light bg-light">
               <mat-icon color="primary">home</mat-icon>
             </button>
             <button mat-menu-item
-                    (click)="onChangePassword()">Change Password
-              <mat-icon color="primary">lock</mat-icon>
-            </button>
-            <button mat-menu-item
-                    (click)="logout()">Log Out
+                    (click)="togglePopup()">Log Out
               <mat-icon color="primary">logout</mat-icon>
             </button>
           </ng-template>

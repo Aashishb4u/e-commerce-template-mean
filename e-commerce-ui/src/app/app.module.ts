@@ -26,6 +26,12 @@ import { FancyCarousalComponent } from './shared/fancy-carousal/fancy-carousal.c
 import {MatSidenavModule} from "@angular/material/sidenav";
 import { OurServicesComponent } from './pages/our-services/our-services.component';
 import { DynamicMatMenuComponent } from './shared/dynamic-mat-menu/dynamic-mat-menu.component';
+import {NgxPaginationModule} from "ngx-pagination";
+import {CKEditorModule} from "@ckeditor/ckeditor5-angular";
+import {ReactiveFormsModule} from "@angular/forms";
+import { ProductDetailsComponent } from './pages/dashboard/product-details/product-details.component';
+import { AddressDetailsComponent } from './pages/dashboard/address-details/address-details.component';
+import { ShowOnViewDirective } from './shared/directives/show-on-view.directive';
 
 @NgModule({
   declarations: [
@@ -44,7 +50,10 @@ import { DynamicMatMenuComponent } from './shared/dynamic-mat-menu/dynamic-mat-m
     FooterComponent,
     FancyCarousalComponent,
     OurServicesComponent,
-    DynamicMatMenuComponent
+    DynamicMatMenuComponent,
+    ProductDetailsComponent,
+    AddressDetailsComponent,
+    ShowOnViewDirective,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +64,10 @@ import { DynamicMatMenuComponent } from './shared/dynamic-mat-menu/dynamic-mat-m
     MatSnackBarModule,
     HttpClientModule,
     SlickCarouselModule,
-    MatSidenavModule
+    MatSidenavModule,
+    NgxPaginationModule,
+    CKEditorModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideClientHydration(),

@@ -1,1 +1,86 @@
-<p>account-details works!</p>
+<div class="my-account__edit-form">
+  <form name="account_edit_form" class="needs-validation" novalidate="">
+    <div class="row">
+      <div class="col-md-12 mb-3">
+        <div class="my-3 mb-3">
+          <h5 class="text-uppercase mb-0 text-lg font-bold">Account Details</h5>
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <div class="form-floating my-3 mb-3">
+          <input type="text" class="form-control" id="account_first_name" placeholder="First Name"
+                 required="">
+          <label for="account_first_name">First Name</label>
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <div class="form-floating my-3 mb-3">
+          <input type="text" class="form-control" id="account_last_name" placeholder="Last Name"
+                 required="">
+          <label for="account_last_name">Last Name</label>
+        </div>
+      </div>
+      <div class="col-md-12 mb-3">
+        <div class="form-floating my-3 mb-3">
+          <input type="text" class="form-control" id="phone_number_" placeholder="Phone Number"
+                 required="">
+          <label for="phone_number_">Phone Number</label>
+        </div>
+      </div>
+      <div class="col-md-12 mb-3">
+        <div class="form-floating my-3 mb-3">
+          <input type="email" class="form-control" id="account_email" placeholder="Email Address"
+                 required="">
+          <label for="account_email">Email Address</label>
+        </div>
+      </div>
+      <div class="col-md-12 mb-3">
+        <div class="my-3 mb-3">
+          <button
+            class="bg-blue-600 text-white active:bg-blue-800 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+            type="button">
+            Save Changes
+          </button>
+          <!--                      <button class="btn btn-primary">Save Changes</button>-->
+        </div>
+      </div>
+      <div class="col-md-12 mb-3 mt-8">
+        <div class="my-3 mb-3">
+          <h5 class="text-uppercase mb-0 text-lg font-bold">Password Change</h5>
+        </div>
+      </div>
+      <div class="col-md-12 mb-3">
+        <div class="form-floating my-3 mb-3">
+          <input type="password" class="form-control" id="account_current_password"
+                 placeholder="Current password" required="">
+          <label for="account_current_password">Current password</label>
+        </div>
+      </div>
+      <div class="col-md-12 mb-3">
+        <div class="form-floating my-3 mb-3">
+          <input type="password" class="form-control" id="account_new_password" placeholder="New password"
+                 required="">
+          <label for="account_new_password">New password</label>
+        </div>
+      </div>
+      <div class="col-md-12 mb-3">
+        <div class="form-floating my-3 mb-3">
+          <input type="password" class="form-control" data-cf-pwd="#account_new_password"
+                 id="account_confirm_password" placeholder="Confirm new password" required="">
+          <label for="account_confirm_password">Confirm new password</label>
+          <div class="invalid-feedback">Passwords did not match!</div>
+        </div>
+      </div>
+      <div class="col-md-12 mb-3">
+        <div class="my-3 mb-3">
+          <button
+            class="bg-blue-600 text-white active:bg-blue-800 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+            type="button">
+            Save Changes
+          </button>
+          <!--                      <button class="btn btn-primary">Save Changes</button>-->
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

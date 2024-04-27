@@ -45,18 +45,17 @@
               <div
                 class="w-9/12 slideshow-text full-width_padding position-absolute start-50 top-50 translate-middle pb-4 pb-xl-5">
                 <p
-                  class=" position-relative text_dash text-uppercase fs-base fw-medium animate animate_fade animate_btt animate_delay-3 text-white mb-2">
+                  class=" position-relative text_dash text-uppercase fs-base fw-medium animate__animated animate_fade animate_btt animate_delay-3 text-white mb-2">
                   URO ONE <span style="top: -8px" class="p-1 position-absolute" >®</span>
                 </p>
-                <h2
-                  class="animate__animated animate__fadeInUp banner-text-6xl fs-45 animate animate_fade animate_btt animate_delay-5 mb-2 text-white text-uppercase lh-1 text-6xl mb-3">
+                <h2 class="banner-text-6xl fs-45 animate__animated animate_fade animate_btt animate_delay-5 mb-2 text-white text-uppercase lh-1 text-6xl mb-3">
                   {{slide?.title}}
                 </h2>
                 <h2 style="line-height: 2.5rem"
-                    class="banner-text-3xl fs-45 animate animate_fade animate_btt animate_delay-5 mb-4 opacity-60 text-white text-uppercase">
+                    class="banner-text-3xl fs-45 animate__animated animate_fade animate_btt animate_delay-5 mb-4 opacity-60 text-white text-uppercase">
                   <!--                {{slide?.subTitle}}-->
                 </h2>
-                <div class="animate animate_fade animate_btt animate_delay-7">
+                <div class="animate__animated animate_fade animate_btt animate_delay-7">
                   <a href="./shop1.html"
                      class="theme-btn btn btn-primary border-0 fw-semi-bold text-uppercase theme-bg-color-secondary border-radius-10 btn-50 fs-base text-white text-primary">Shop
                     Now</a>
@@ -122,7 +121,7 @@
     </div>
   </div>
 
-  <div style="background: #F1E9E9" class="px-xl-5 px-md-3 px-lg-3 px-xs-2 pt-4">
+  <div appShowOnView style="background: #F1E9E9" class="opacity-0 px-xl-5 px-md-3 px-lg-3 px-xs-2 pt-4">
     <div class="my-16 position-relative">
       <!--      <div class="nc-BgGlassmorphism absolute inset-x-0 md:top-10 left-2.5 xl:top-40 min-h-0 pl-20 py-24 flex overflow-hidden z-0" data-nc-id="BgGlassmorphism"><span class="block bg-[#ef233c] w-72 h-72 rounded-full mix-blend-multiply filter blur-3xl opacity-10 lg:w-96 lg:h-96"></span><span class="block bg-[#04868b] w-72 h-72 -ml-20 mt-40 rounded-full mix-blend-multiply filter blur-3xl opacity-10 lg:w-96 lg:h-96 nc-animation-delay-2000"></span></div>-->
       <div class="d-flex align-items-center justify-content-md-between flex-wrap mb-3 mb-xl-4">
@@ -152,64 +151,66 @@
       <div class="tab-pane fade show active" id="collections-tab-1" role="tabpanel"
            aria-labelledby="collections-tab-1-trigger">
         <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-5">
-          <div *ngFor="let product of products" class="product-card-wrapper cursor-pointer mb-2">
-            <div class="product-card product-card_style9 border rounded-3 mb-3 mb-md-4 bg-white">
-              <div class="position-relative pb-4 p-2">
-                <div class="">
-                  <img class="w-100 object-fit-cover" loading="lazy" [src]="product.img" width="255" height="200"
-                       alt="Cropped Faux leather Jacket">
-                </div>
-                <div class="anim_appear-bottom position-absolute w-100 text-center">
-                  <button (click)="toggleCart()"
-                          class="rounded-full d-flex align-items-center justify-content-center btn btn-round btn-hover-red border-0 text-uppercase me-2 js-add-cart js-open-aside d-inline-flex align-items-center justify-content-center"
-                          data-aside="cartDrawer" title="Add To Cart">
-                    <i class="fa fa-shopping-cart"></i>
-                    <!--                  <img style="width: 16px" src="assets/icons/shopping-cart.png" alt="">-->
-                  </button>
-                  <button [routerLink]="['/shop-details']"
-                          class="rounded-full d-flex align-items-center justify-content-center btn btn-round btn-hover-red border-0 text-uppercase me-2 js-quick-view d-inline-flex align-items-center justify-content-center"
-                          data-bs-toggle="modal" data-bs-target="#quickView" title="Quick view">
-                    <i class="fa fa-eye"></i>
-                    <!--                  <img style="width: 16px" src="assets/icons/view.png" alt="">-->
-                  </button>
-                  <!--                <button-->
-                  <!--                  class="rounded-full d-flex align-items-center justify-content-center btn btn-round btn-hover-red border-0 text-uppercase js-add-wishlist d-inline-flex align-items-center justify-content-center"-->
-                  <!--                  title="Add To Wishlist">-->
-                  <!--                  <i class="fa fa-heart"></i>-->
-                  <!--                  &lt;!&ndash;                  <img style="width: 16px" src="assets/icons/heart.png" alt="">&ndash;&gt;-->
-                  <!--                </button>-->
-                </div>
-              </div>
-              <div class="pc__info position-relative">
-                <p class="pc__category text-sm fs-13 fw-medium">{{product?.cat}}</p>
-                <h6 class="pc__title fs-16 mb-2"><a href="./product1_simple.html">{{product?.name}}</a></h6>
-                <div class="product-card__review d-sm-flex align-items-center">
-                  <div class="reviews-group d-flex">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
+          <ng-container *ngFor="let product of products; let index = index">
+            <div appShowOnView [delay]="index * 100"  class="opacity-0 product-card-wrapper cursor-pointer mb-2">
+              <div class="product-card product-card_style9 border rounded-3 mb-3 mb-md-4 bg-white">
+                <div class="position-relative pb-4 p-2">
+                  <div class="">
+                    <img class="w-100 object-fit-cover" loading="lazy" [src]="product.img" width="255" height="200"
+                         alt="Cropped Faux leather Jacket">
                   </div>
-                  <span class="reviews-note text-lowercase text-secondary fs-13 ms-sm-1">{{product?.ratings}}</span>
+                  <div class="anim_appear-bottom position-absolute w-100 text-center">
+                    <button (click)="toggleCart()"
+                            class="rounded-full d-flex align-items-center justify-content-center btn btn-round btn-hover-red border-0 text-uppercase me-2 js-add-cart js-open-aside d-inline-flex align-items-center justify-content-center"
+                            data-aside="cartDrawer" title="Add To Cart">
+                      <i class="fa fa-shopping-cart"></i>
+                      <!--                  <img style="width: 16px" src="assets/icons/shopping-cart.png" alt="">-->
+                    </button>
+                    <button [routerLink]="['/shop-details']"
+                            class="rounded-full d-flex align-items-center justify-content-center btn btn-round btn-hover-red border-0 text-uppercase me-2 js-quick-view d-inline-flex align-items-center justify-content-center"
+                            data-bs-toggle="modal" data-bs-target="#quickView" title="Quick view">
+                      <i class="fa fa-eye"></i>
+                      <!--                  <img style="width: 16px" src="assets/icons/view.png" alt="">-->
+                    </button>
+                    <!--                <button-->
+                    <!--                  class="rounded-full d-flex align-items-center justify-content-center btn btn-round btn-hover-red border-0 text-uppercase js-add-wishlist d-inline-flex align-items-center justify-content-center"-->
+                    <!--                  title="Add To Wishlist">-->
+                    <!--                  <i class="fa fa-heart"></i>-->
+                    <!--                  &lt;!&ndash;                  <img style="width: 16px" src="assets/icons/heart.png" alt="">&ndash;&gt;-->
+                    <!--                </button>-->
+                  </div>
                 </div>
-                <div class="my-2 text-gray-500">
-                  Without JobHunt i’d be homeless, they found me a job and got me sorted out quickly with everything!
-                  Can’t quite.
-                </div>
-                <div class="d-flex mt-4 gap-1 align-items-center">
-                  <span class="product-card__price price fs-16 fw-semi-bold">{{product?.price}}</span> <span
-                  class="text-gray-400">/ 400 ml</span>
+                <div class="pc__info position-relative">
+                  <p class="pc__category text-sm fs-13 fw-medium">{{product?.cat}}</p>
+                  <h6 class="pc__title fs-16 mb-2"><a href="./product1_simple.html">{{product?.name}}</a></h6>
+                  <div class="product-card__review d-sm-flex align-items-center">
+                    <div class="reviews-group d-flex">
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                    </div>
+                    <span class="reviews-note text-lowercase text-secondary fs-13 ms-sm-1">{{product?.ratings}}</span>
+                  </div>
+                  <div class="my-2 text-gray-500">
+                    Without JobHunt i’d be homeless, they found me a job and got me sorted out quickly with everything!
+                    Can’t quite.
+                  </div>
+                  <div class="d-flex mt-4 gap-1 align-items-center">
+                    <span class="product-card__price price fs-16 fw-semi-bold">{{product?.price}}</span> <span
+                    class="text-gray-400">/ 400 ml</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </ng-container>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="px-xl-5 px-md-3 px-lg-3 px-xs-2 pt-4" style="margin-bottom: 3rem">
+  <div appShowOnView class="opacity-0 px-xl-5 px-md-3 px-lg-3 px-xs-2 pt-4" style="margin-bottom: 3rem">
     <div class="mb-16 row align-items-center">
       <div class="col-xl-4 col-lg-4 order-0 order-lg-2">
         <div class="">
@@ -247,7 +248,7 @@
             </div>
             <div class="col-12 col-xl-9 col-lg-8 px-4">
               <p>
-                IBluechem Group India serves as a supplier and distributor of top-tier Industrial, Automotive, Marine, and
+                iBluechem Group India serves as a supplier and distributor of top-tier Industrial, Automotive, Marine, and
                 Food Grade Lubricants, Metalworking Fluids, Deformation fluids, Industrial Cleaners, Rust Preventives,
                 Greases, Lubricants & Metalworking Additives, Fuel Additive Packages, and Base Oils. As a privately held
                 company based in Maharashtra, India, we are led by a team of seasoned, highly technical professionals
@@ -258,10 +259,10 @@
           </div>
           <div class="about-list">
             <ul class="list-wrap">
-              <li><i class="fas fa-check"></i>Prompt delivery directly to your location.</li>
-              <li><i class="fas fa-check"></i>Guidance for efficient, profitable product choices.</li>
-              <li><i class="fas fa-check"></i>Warehousing for efficient product storage.</li>
-              <li><i class="fas fa-check"></i>Maintain customer specific inventory levels.</li>
+              <li appShowOnView [delay]="100" class="opacity-0"><i class="fas fa-check"></i>Prompt delivery directly to your location.</li>
+              <li appShowOnView [delay]="200" class="opacity-0"><i class="fas fa-check"></i>Guidance for efficient, profitable product choices.</li>
+              <li appShowOnView [delay]="300" class="opacity-0"><i class="fas fa-check"></i>Warehousing for efficient product storage.</li>
+              <li appShowOnView [delay]="400" class="opacity-0"><i class="fas fa-check"></i>Maintain customer specific inventory levels.</li>
             </ul>
           </div>
           <a href="./shop1.html"
@@ -299,7 +300,7 @@
 
   <div class="px-xl-5 px-md-3 px-lg-3 px-xs-2 pt-4">
     <div class="mb-16 row">
-      <div class="col-lg-4">
+      <div appShowOnView [delay]="100" class="opacity-0 col-lg-4">
         <div class="position-relative overflow-hidden border-radius-10">
           <img loading="lazy" src="assets/banners/banner.png" width="448" height="235" alt="">
           <div class="position-absolute top-10 content_center text-left container w-100 px-4 mx-3">
@@ -309,7 +310,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-4">
+      <div appShowOnView [delay]="200" class="opacity-0 col-lg-4">
         <div class="position-relative overflow-hidden border-radius-10">
           <img loading="lazy" src="assets/banners/banner-2.png" width="448" height="235" alt="">
           <div class="position-absolute top-10 content_center text-left container w-100 px-4 mx-3">
@@ -319,7 +320,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-4">
+      <div appShowOnView [delay]="300" class="opacity-0 col-lg-4">
         <div class="position-relative overflow-hidden border-radius-10">
           <img loading="lazy" src="assets/banners/banner-3.png" width="448" height="235" alt="">
           <div class="position-absolute top-10 content_center text-left container w-100 px-4 mx-3">
