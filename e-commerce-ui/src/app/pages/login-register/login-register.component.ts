@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {SharedService} from "../../services/shared.service";
 import {Router} from "@angular/router";
 import {ApiService} from "../../services/api.service";
+import {passwordMatchValidator} from "../../validators/passwordMatch.validator";
 
 @Component({
   selector: 'app-login-register',
@@ -12,7 +13,9 @@ import {ApiService} from "../../services/api.service";
 export class LoginRegisterComponent {
   loginForm: FormGroup;
   registerForm: FormGroup;
+  forgotPasswordForm: FormGroup;
   loginEnabled: any = true;
+  viewMode: any = 'login';
   constructor(public sharedService: SharedService, private formBuilder: FormBuilder, public apiService: ApiService, public router: Router) { }
 
   ngOnInit() {
@@ -23,13 +26,42 @@ export class LoginRegisterComponent {
       password: ['', Validators.required]
     });
 
+   this.forgotPasswordForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+    });
+
     this.registerForm = this.formBuilder.group({
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
-      email: ['', Validators.required, Validators.email],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required]
+      phoneNumber: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
+      confirmPassword: ['', [Validators.required]]
+    },{
+      // Apply the custom validator to the form group
+      validators: passwordMatchValidator
     });
+  }
+
+  onRegister() {
+    if (this.registerForm.valid) {
+      const data = {
+        firstName: this.registerForm.get('firstName')?.value,
+        lastName: this.registerForm.get('lastName')?.value,
+        email: this.registerForm.get('email')?.value,
+        phoneNumber: this.registerForm.get('phoneNumber')?.value,
+        password: this.registerForm.get('password')?.value
+      };
+      this.apiService.register(data).subscribe(
+        res => this.loginSuccess(res),
+        error => {
+          this.apiService.commonError(error);
+        }
+      );
+    } else {
+      this.registerForm.markAllAsTouched();
+      this.apiService.showToast('Please Complete Registration form');
+    }
   }
 
   onSubmit() {
@@ -55,11 +87,11 @@ export class LoginRegisterComponent {
     console.log(res);
     const userRole = res.user.role.name;
     this.sharedService.showSpinner.next(false);
-    if (userRole.toLowerCase() === 'customer') {
-      this.router.navigate(['/customer-dashboard']);
-    } else {
+    // if (userRole.toLowerCase() === 'customer') {
+    //   this.router.navigate(['/customer-dashboard']);
+    // } else {
       this.router.navigate(['/dashboard']);
-    }
+    // }
   }
 
   goToLanding() {

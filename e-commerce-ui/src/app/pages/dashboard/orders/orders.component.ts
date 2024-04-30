@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class OrdersComponent {
   showOrders: any = false;
+  currentPage: any = 1;
   orders: any = [
     {
       id: "#1234",

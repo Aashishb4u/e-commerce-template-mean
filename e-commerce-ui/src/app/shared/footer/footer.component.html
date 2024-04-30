@@ -1,7 +1,7 @@
-<div class="footer">
-  <div class="footer-middle px-xl-5 px-md-3 px-lg-3 px-xs-2 pt-4">
-    <div class="row row-cols-lg-4 pt-20 pb-20 row-cols-2">
-      <div class="footer-column footer-store-info col-12 mb-4 mb-lg-0">
+<div class="footer pb-16 lg:pb-0">
+  <div class="footer-middle lg:px-10 px-6 pt-4">
+    <div class="row row-cols-lg-4 lg:pt-12 pt-6 lg:pb-20 row-cols-2">
+      <div class="footer-column footer-store-info col-12 mb-8 mb-lg-0 px-4">
         <div class="logo uro-logo mb-4">
           <img src="assets/company-logo/ibgi_transperant.png" alt="">
 <!--          <img src="assets/company-logo/company-logo.png" alt="Uomo" class="logo__image d-block">-->
@@ -14,14 +14,14 @@
         <div><strong class="fw-medium">+91 826 391 1766</strong></div>
 
         <ul class="d-flex gap-3 mt-2 social-links list-unstyled d-flex flex-wrap mb-0">
-          <li><i class="fab fa-facebook"></i></li>
-          <li><i class="fab fa-instagram"></i></li>
-          <li><i class="fab fa-whatsapp"></i></li>
-          <li><i class="fab fa-youtube"></i></li>
+          <li><i class="text-lg fab fa-facebook"></i></li>
+          <li><i class="text-lg fab fa-instagram"></i></li>
+          <li><i class="text-lg fab fa-whatsapp"></i></li>
+          <li><i class="text-lg fab fa-youtube"></i></li>
         </ul>
       </div><!-- /.footer-column -->
-      <div class="d-flex flex-column gap-4 mb-4 mb-lg-0">
-        <div class="text-xl uppercase">Company</div>
+      <div class="d-flex flex-column gap-4 mb-8 mb-lg-0">
+        <div class="text-base lg:text-xl uppercase">Company</div>
         <ul class="d-flex flex-column gap-3">
           <li>Home</li>
           <li>About Us</li>
@@ -29,8 +29,8 @@
           <li>Contact Us</li>
         </ul>
       </div>
-      <div class="d-flex flex-column gap-4 mb-4 mb-lg-0">
-        <div class="text-xl uppercase">SHOP</div>
+      <div class="d-flex flex-column gap-4 mb-8 mb-lg-0">
+        <div class="text-base lg:text-xl uppercase">SHOP</div>
         <ul class="d-flex flex-column gap-3">
           <li>products</li>
           <li>Cart</li>
@@ -38,11 +38,11 @@
           <li>Contact Us</li>
         </ul>
       </div>
-      <div class="d-flex flex-column mb-4 mb-lg-0">
-        <div class="text-xl uppercase mb-4">Subscribe</div>
+      <div class="d-flex flex-column mb-4 mb-lg-0 col-12">
+        <div class="text-base lg:text-xl uppercase mb-4">Subscribe</div>
         <p>Be the first to get the latest news about trends, promotions, and much more!</p>
         <form action="./index.html" class="footer-newsletter__form position-relative bg-body">
-          <input class="form-control border-white" type="email" name="email" placeholder="Your email address">
+          <input class="form-control border-white p-5" type="email" name="email" placeholder="Your email address">
           <input class="px-3 btn-link fw-medium bg-white position-absolute top-0 end-0 h-100" type="submit" value="JOIN">
         </form>
 
@@ -56,8 +56,8 @@
 
     </div><!-- /.row-cols-5 -->
     <hr>
-    <div class="py-4 w-100 d-flex justify-content-center text-center copy-right d-flex gap-2">
-      <div class="d-flex gap-1 align-items-center">
+    <div class="py-4 w-100 lg:flex-row flex-col justify-center text-center copy-right d-flex gap-2">
+      <div class="justify-center d-flex gap-1 align-items-center">
         &#169;
 <!--        Copyright Icon -->
         <div>URO ONE 2024</div>
@@ -68,3 +68,35 @@
     </div>
   </div>
 </div>
+
+
+<footer class="footer-mobile shadow container w-100 px-5 d-md-none bg-body position-fixed footer-mobile_initialized">
+  <div class="row text-center">
+    <div class="col-4">
+      <a href="/" class="footer-mobile__link d-flex flex-column align-items-center">
+        <i class="fa fa-home text-lg"></i>
+        <span>Home</span>
+      </a>
+    </div><!-- /.col-4 -->
+
+    <div class="col-4">
+      <a [routerLink]="['/shop-list']" class="footer-mobile__link d-flex flex-column align-items-center">
+        <div class="position-relative">
+          <i class="fa fa-tags text-lg"></i>
+<!--          <span class="wishlist-amount d-block position-absolute js-wishlist-count">3</span>-->
+        </div>
+        <span>Products</span>
+      </a>
+    </div><!-- /.col-4 -->
+
+    <div class="col-4">
+      <a (click)="goToCart()" class="footer-mobile__link d-flex flex-column align-items-center">
+        <div class="position-relative">
+          <i class="fa fa-shopping-cart text-lg"></i>
+          <span class="wishlist-amount d-block position-absolute js-wishlist-count">3</span>
+        </div>
+        <span>Cart</span>
+      </a>
+    </div><!-- /.col-3 -->
+  </div><!-- /.row -->
+</footer>

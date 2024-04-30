@@ -1,41 +1,43 @@
 <app-header></app-header>
-<div class="login-container">
-  <ng-container *ngIf="loginEnabled; else registerEnabled">
-    <form [formGroup]="loginForm" class="login-form" (submit)="onSubmit()" (keydown.enter)="onSubmit()">
+<div class="login-container px-4" [ngSwitch]="viewMode">
+  <ng-container *ngSwitchCase="'login'">
+    <form [formGroup]="loginForm" class="login-form">
       <div class="d-flex justify-content-center logo-container">
         <img [src]="sharedService.companyLogoTransperant" alt="Company Logo" class="logo-image">
       </div>
 
       <div class="col-md-12 mb-8">
-        <div class="form-floating my-3 mb-3">
-          <input type="text" class="form-control" id="email"
+        <div class="form-floating {{loginForm.get('email').invalid && loginForm.get('email').touched ? 'invalid' : ''}}">
+          <input formControlName="email" type="text"
+                 class="form-control" id="email"
                  placeholder="Current password" required="">
           <label for="email">Email</label>
         </div>
+        <div *ngIf="loginForm.get('email').invalid && loginForm.get('email').touched"
+             class="mt-2 text-xs mx-3 text-red-600 ">
+          Please Enter valid Email
+        </div>
       </div>
-      <div class="col-md-12 mb-8">
-        <div class="form-floating my-3 mb-3">
-          <input type="password" class="form-control" id="password"
+      <div class="col-md-12 mb-3">
+        <div class="form-floating {{loginForm.get('password').invalid && loginForm.get('password').touched ? 'invalid' : ''}}">
+          <input formControlName="password" type="password"
+                 class="form-control" id="password"
                  placeholder=" password" required="">
           <label for="password">Password</label>
         </div>
+        <div *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched"
+             class="mt-2 text-xs mx-3 text-red-600 ">
+          Please Enter valid Password
+        </div>
       </div>
-      <!--    <mat-form-field appearance="outline" class="form-field mat-large">-->
-      <!--      <mat-label>Email</mat-label>-->
-      <!--      <input tabindex="1" matInput formControlName="email" type="email" placeholder="Enter your email">-->
-      <!--      <mat-error *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">Please enter a valid email</mat-error>-->
-      <!--    </mat-form-field>-->
-
-      <!--    <mat-form-field appearance="outline" class="mat-large form-field">-->
-      <!--      <mat-label>Password</mat-label>-->
-      <!--      <input tabindex="2" maxlength="30" matInput formControlName="password" class="mat-large" type="password" placeholder="Enter your password">-->
-      <!--      <mat-error *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">Please enter a password</mat-error>-->
-      <!--    </mat-form-field>-->
-
+      <div class="col-md-12 mb-2">
+        <div class="d-flex justify-content-end">
+          <button class="text-gray-500 text-xs" mat-button (click)="viewMode = 'forgotPassword'">Forgot Password?</button>
+        </div>
+      </div>
       <div class="d-flex mt-10 justify-content-between align-items-center">
-        <button mat-button color="primary" (click)="loginEnabled = !loginEnabled">Forgot Password?</button>
-        <!--      <button mat-raised-button color="primary" tabindex="3" type="submit">Login</button>-->
-        <button
+        <button class="text-left" mat-button color="primary" (click)="viewMode = 'register'">Don't have an Account?</button>
+        <button (click)="onSubmit()" (keydown.enter)="onSubmit()"
           class="bg-blue-600 text-white active:bg-blue-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
           type="submit">
           Login
@@ -44,45 +46,84 @@
     </form>
   </ng-container>
 
-  <ng-template #registerEnabled>
-    <form [formGroup]="loginForm" class="login-form" (submit)="onSubmit()" (keydown.enter)="onSubmit()">
-<!--      <div class="d-flex justify-content-center logo-container">-->
-<!--        <img [src]="sharedService.companyLogoTransperant" alt="Company Logo" class="logo-image">-->
-<!--      </div>-->
-
+  <ng-container *ngSwitchCase="'register'">
+    <form [formGroup]="registerForm" class="my-8 login-form" >
+      <div class="d-flex justify-content-center mb-8 logo-container">
+        <img [src]="sharedService.companyLogoTransperant" alt="Company Logo" class="logo-image">
+      </div>
       <div class="col-md-12 mb-8">
-        <div class="form-floating my-3 mb-3">
-          <input type="text" class="form-control" id="firstName"
+        <div class="form-floating {{registerForm.get('firstName').invalid && registerForm.get('firstName').touched ? 'invalid' : ''}} my-3 mb-3">
+          <input formControlName="firstName" type="text"
+                 class="form-control"
+                 id="firstName"
                  placeholder="First Name" required="">
           <label for="firstName">First Name</label>
         </div>
+        <div *ngIf="registerForm.get('firstName').invalid && registerForm.get('firstName').touched"
+             class="mt-2 text-xs mx-3 text-red-600 ">
+          Please Enter valid First Name
+        </div>
       </div>
       <div class="col-md-12 mb-8">
-        <div class="form-floating my-3 mb-3">
-          <input type="text" class="form-control" id="lastName"
+        <div class="form-floating my-3 mb-3 {{registerForm.get('lastName').invalid && registerForm.get('lastName').touched ? 'invalid' : ''}}">
+          <input formControlName="lastName" type="text" class="form-control"
+                 id="lastName"
                  placeholder="Last Name" required="">
           <label for="lastName">Last Name</label>
         </div>
-      </div>
-      <div class="col-md-12 mb-8">
-        <div class="form-floating my-3 mb-3">
-          <input type="email" class="form-control" id="email_1"
-                 placeholder="Email" required="">
-          <label for="email_1">Email</label>
+        <div *ngIf="registerForm.get('lastName').invalid && registerForm.get('lastName').touched"
+             class="mt-2 text-xs mx-3 text-red-600 ">
+          Please Enter valid Last Name
         </div>
       </div>
       <div class="col-md-12 mb-8">
-        <div class="form-floating my-3 mb-3">
-          <input type="password" class="form-control" id="password_1"
+        <div class="form-floating my-3 mb-3 {{registerForm.get('phoneNumber').invalid && registerForm.get('phoneNumber').touched ? 'invalid' : ''}}">
+          <input formControlName="phoneNumber" type="text" class="form-control"
+                 id="phoneNumber"
+                 placeholder="Phone Number" required="">
+          <label for="phoneNumber">Phone Number</label>
+        </div>
+        <div *ngIf="registerForm.get('phoneNumber').invalid && registerForm.get('phoneNumber').touched"
+             class="mt-2 text-xs mx-3 text-red-600 ">
+          Please Enter valid Phone Number
+        </div>
+      </div>
+      <div class="col-md-12 mb-8">
+        <div class="form-floating my-3 mb-3 {{registerForm.get('email').invalid && registerForm.get('email').touched ? 'invalid' : ''}}">
+          <input formControlName="email" type="text" class="form-control"
+                 id="email_2"
+                 placeholder="Email" required="">
+          <label for="email_2">Email</label>
+        </div>
+        <div *ngIf="registerForm.get('email').invalid && registerForm.get('email').touched"
+             class="mt-2 text-xs mx-3 text-red-600 ">
+          Please Enter valid Email
+        </div>
+      </div>
+      <div class="col-md-12 mb-8">
+        <div class="form-floating my-3 mb-3 {{registerForm.get('password').invalid && registerForm.get('password').touched ? 'invalid' : ''}}">
+          <input formControlName="password" type="password" class="form-control"
+                 id="password_1"
                  placeholder="Password" required="">
           <label for="password_1">Password</label>
         </div>
+        <div *ngIf="registerForm.get('password').invalid && registerForm.get('password').touched"
+             class="mt-2 text-xs mx-3 text-red-600 ">
+          Please Enter valid Password
+        </div>
       </div>
       <div class="col-md-12 mb-8">
-        <div class="form-floating my-3 mb-3">
-          <input type="password" class="form-control" id="confirmPassword"
+        <div class="form-floating my-3 mb-3
+{{(registerForm.get('confirmPassword').invalid || registerForm.errors['passwordMismatch']) && registerForm.get('confirmPassword').touched ? 'invalid' : ''}}">
+          <input formControlName="confirmPassword" type="password" class="form-control"
+                 id="confirmPassword"
                  placeholder="Confirm Password" required="">
           <label for="confirmPassword">Confirm Password</label>
+        </div>
+
+        <!-- Error message for password mismatch -->
+        <div class="mt-2 text-xs mx-3 text-red-600 " *ngIf="registerForm.errors['passwordMismatch'] && (registerForm.get('password').touched && registerForm.get('confirmPassword').touched)">
+          Passwords do not match
         </div>
       </div>
       <!--    <mat-form-field appearance="outline" class="form-field mat-large">-->
@@ -98,14 +139,39 @@
       <!--    </mat-form-field>-->
 
       <div class="d-flex mt-10 justify-content-between align-items-center">
-        <button mat-button color="primary" (click)="loginEnabled = !loginEnabled">Login</button>
-        <!--      <button mat-raised-button color="primary" tabindex="3" type="submit">Login</button>-->
-        <button
-          class="bg-blue-600 text-white active:bg-blue-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-          type="submit">
+        <button mat-button color="primary" (click)="viewMode = 'login'">Already have an Account?</button>
+        <button (click)="onRegister()" (keydown.enter)="onRegister()"
+          class="bg-blue-600 text-white active:bg-blue-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
           Register
         </button>
       </div>
     </form>
-  </ng-template>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'forgotPassword'">
+    <form [formGroup]="forgotPasswordForm" class="login-form" >
+      <div class="d-flex justify-content-center mb-8 logo-container">
+        <img [src]="sharedService.companyLogoTransperant" alt="Company Logo" class="logo-image">
+      </div>
+      <div class="col-md-12 mb-8">
+        <div class="form-floating my-3 mb-3 {{forgotPasswordForm.get('email').invalid && forgotPasswordForm.get('email').touched ? 'invalid' : ''}}">
+          <input formControlName="email" type="text" class="form-control" id="email_1"
+                 placeholder="Email" required="">
+          <label for="email_1">Email</label>
+        </div>
+        <div *ngIf="forgotPasswordForm.get('email').invalid && forgotPasswordForm.get('email').touched"
+             class="mt-2 text-xs mx-3 text-red-600 ">
+          Please Enter valid Email
+        </div>
+      </div>
+
+      <div class="d-flex mt-10 justify-content-between align-items-center">
+        <button class="text-left" mat-button color="primary" (click)="viewMode = 'login'">Remember Password?</button>
+        <button (click)="onSubmit()" (keydown.enter)="onSubmit()"
+                class="bg-blue-600 text-white active:bg-blue-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
+          Reset
+        </button>
+      </div>
+    </form>
+  </ng-container>
 </div>

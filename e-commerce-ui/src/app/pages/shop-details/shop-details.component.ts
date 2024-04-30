@@ -16,7 +16,16 @@ export class ShopDetailsComponent {
     "slidesToScroll": 1,
     "autoplay": true,
     "infinite": true,
-    "pauseOnHover": false
+    "pauseOnHover": false,
+    responsive: [
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   }
 
   mainSlickConfig = {

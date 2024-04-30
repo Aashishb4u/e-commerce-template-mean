@@ -18,9 +18,15 @@ export const appConstants = {
     // domainUrlApi: 'http://127.0.0.1:8000/api/',
 
     // Production Url
-    baseUrl: 'https://api.creativehand.co.in',
-    baseAuthUrl: 'https://api.creativehand.co.in/api/auth/',
-    baseURLAdminAPIs: 'https://api.creativehand.co.in/api/v1/',
-    domainUrlApi: 'https://api.creativehand.co.in/api/',
+    baseUrl: 'https://api-uro.creativehand.co.in',
+    baseAuthUrl: 'https://api-uro.creativehand.co.in/api/auth/',
+    baseURLAdminAPIs: 'https://api-uro.creativehand.co.in/api/v1/',
+    domainUrlApi: 'https://api-uro.creativehand.co.in/api/',
+
+    // Production Url
+    // baseUrl: 'http://localhost:3000',
+    // baseAuthUrl: 'http://localhost:3000/v1/auth/',
+    // baseURLAdminAPIs: 'http://localhost:3000/v1/',
+    // domainUrlApi: 'http://localhost:3000/',
 };
 

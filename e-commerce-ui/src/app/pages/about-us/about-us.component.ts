@@ -12,7 +12,16 @@ export class AboutUsComponent {
     "centerMode": true,
     "slidesToScroll": 1,
     "autoplay": true,
-    "pauseOnHover": false
+    "pauseOnHover": false,
+    responsive: [
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   }
   testimonials: any = [
     {},

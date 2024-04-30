@@ -102,7 +102,8 @@ export class AppComponent implements OnInit {
 
     this.sharedService.doLogout.subscribe((res) => {
       if(res) {
-        this.logout();
+        const refreshToken = localStorage.getItem('my-refresh-token');
+        this.logout(refreshToken);
       }
     });
   }
@@ -128,10 +129,12 @@ export class AppComponent implements OnInit {
     this.sharedService.showLogout.next(false);
   }
 
-  logout() {
-    this.apiService.logout().subscribe((res) => {
-      this.apiService.showToast(res.message);
-      this.router.navigate(['/login']);
+  logout(refreshToken) {
+    this.apiService.logout(refreshToken).subscribe((res) => {
+      if(res) {
+        this.apiService.showToast(res.message);
+      }
+      this.router.navigate(['']);
     });
   }
 }

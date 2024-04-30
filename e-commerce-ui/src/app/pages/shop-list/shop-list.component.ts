@@ -11,7 +11,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class ShopListComponent implements OnInit {
   constructor(public Activatedroute: ActivatedRoute, public sharedService: SharedService, public apiService: ApiService) {
   }
-
+  currentPage: any = 1;
   categoriesData: any = [];
   menus: any = [];
   products: any = [
@@ -74,11 +74,16 @@ export class ShopListComponent implements OnInit {
   params: any;
   title: any = "SHOP LIST";
   imageBanner: any = "assets/banners/oil-banner-3.png";
+  categories: any = [];
 
   ngOnInit() {
     this.Activatedroute.queryParams.subscribe(params => {
       this.params = params;
       this.fetchData();
+    });
+
+    this.sharedService.categories.subscribe((res: any) => {
+      this.categories = res.children;
     });
   }
 

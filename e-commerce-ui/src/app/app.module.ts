@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './pages/landing/landing.component';
@@ -20,7 +19,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {SlickCarouselModule} from "ngx-slick-carousel";
 import { FancyCarousalComponent } from './shared/fancy-carousal/fancy-carousal.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
@@ -32,6 +31,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { ProductDetailsComponent } from './pages/dashboard/product-details/product-details.component';
 import { AddressDetailsComponent } from './pages/dashboard/address-details/address-details.component';
 import { ShowOnViewDirective } from './shared/directives/show-on-view.directive';
+import {HttpTokenInterceptorsService} from "./authentication/http-token-interceptors.service";
 
 @NgModule({
   declarations: [
@@ -71,7 +71,8 @@ import { ShowOnViewDirective } from './shared/directives/show-on-view.directive'
   ],
   providers: [
     provideClientHydration(),
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    {provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptorsService, multi: true}
   ],
   bootstrap: [AppComponent]
 })

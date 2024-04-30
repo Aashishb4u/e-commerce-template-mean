@@ -33,3 +33,11 @@
 .submit-button {
   width: 100%;
 }
+
+
+@media only screen and (max-width: 767px) {
+  .login-container {
+    padding: 1rem 0;
+    min-height: inherit !important;
+  }
+}

@@ -54,3 +54,14 @@
 .product-card_style9 .pc__info {
   margin: 0.875rem 1.25rem 0.8125rem;
 }
+
+@media only screen and (max-width: 600px) {
+  .mob-paginate {
+    display: block !important;
+  }
+  .shop-background-img {
+    img {
+      min-height: 70vh !important;
+    }
+  }
+}

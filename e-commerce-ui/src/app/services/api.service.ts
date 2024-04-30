@@ -112,12 +112,26 @@ export class ApiService {
 
   get userName() {
     const userData = this.storageService.getEncryptedStorageValue(appConstants.USER_INFO);
-    return userData && userData.name ? userData.name : '';
+    return userData && userData.firstName && userData.lastName ? `${userData.firstName} ${userData.lastName}` : '';
   }
 
   get userEmail() {
     const userData = this.storageService.getEncryptedStorageValue(appConstants.USER_INFO);
     return userData && userData.email ? userData.email : '';
+  }
+
+  register(data: any) {
+    return this.http.post(`${this.baseAuthUrl}register`, data, {}).pipe(
+      tap((response: any) => {
+        if (response.tokens && response.user) {
+          this.storageService.storeEncryptedValue(appConstants.USER_INFO, response!.user);
+          this.storageService.storeValue(appConstants.ACCESS_TOKEN_KEY, response.tokens.access.token);
+          this.storageService.storeValue(appConstants.REFRESH_TOKEN_KEY, response.tokens.refresh.token);
+          this.loadToken();
+          this.isAuthenticated.next(true);
+        }
+      })
+    );
   }
 
   login(data: any) {
@@ -134,8 +148,8 @@ export class ApiService {
     );
   }
 
-  logout() {
-    return this.http.post(`${this.baseAuthUrl}logout`, {}, {}).pipe(
+  logout(refreshToken) {
+    return this.http.post(`${this.baseAuthUrl}logout`, {refreshToken: refreshToken}, {}).pipe(
       tap((response: any) => {
         this.isAuthenticated.next(false);
         this.storageService.removeStoredItem(appConstants.REFRESH_TOKEN_KEY);
@@ -350,6 +364,7 @@ export class ApiService {
   }
 
   commonError(err: any) {
+    const refreshToken = this.storageService.getStoredValue(appConstants.REFRESH_TOKEN_KEY);
     const errCode = err.status;
     this.sharedService.showSpinner.next(false);
     if (err && err.error && err.error.message) {
@@ -360,7 +375,7 @@ export class ApiService {
 
     switch (errCode) {
       case 401: {
-        this.logout().subscribe((res) => {
+        this.logout(refreshToken).subscribe((res) => {
           this.showToast('Logged out due to authentication mismatch');
           this.router.navigate(['']);
         });

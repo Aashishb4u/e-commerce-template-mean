@@ -14,7 +14,6 @@ export class ShopingCartComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    debugger;
     if(this.params) {
       this.viewBy = this.params;
     }

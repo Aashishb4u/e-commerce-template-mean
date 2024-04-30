@@ -1,7 +1,9 @@
 <div class="page-content my-account__address">
   <p class="notice mb-12">The following addresses will be used on the checkout page by default.</p>
-  <div class="my-account__address-list justify-content-between d-flex gap-4">
-    <div class="my-account__address-item shadow p-6 rounded-lg">
+  <div class="my-account__address-list
+  justify-content-between d-flex gap-4 align-items-start">
+    <div *ngIf="addBilling; else addBillingBtn"
+         class="my-account__address-item shadow p-6 rounded-lg">
       <div class="my-account__address-item__title d-flex justify-content-between mb-6">
         <div class="text-uppercase text-lg text-bold font-bold">Billing Address</div>
         <a *ngIf="!editBilling; else saveBilling" class="text-lg border-b-2 cursor-pointer"
@@ -9,40 +11,51 @@
         <ng-template #saveBilling>
           <button
             class="bg-blue-600 text-white active:bg-blue-800 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-            type="button" (click)="editBilling = false">
+            type="button" (click)="onSubmitBilling()">
             Save
           </button>
         </ng-template>
       </div>
       <div class="my-account__address-item__detail">
-        <div *ngIf="editBilling; else firstName" class="form-floating my-3 mb-3">
-          <textarea id="first_name" style="height: 200px" type="text" class="form-control"
-                                placeholder="Address" required=""></textarea>
-          <label for="first_name">First Name</label>
-        </div>
-        <ng-template #firstName>
-          <p class="text-sm w-75">
-            Daniel Robinson 1418 River Drive, Suite 35 Cottonhall, CA 9622 United States
-          </p>
-        </ng-template>
-        <br>
-        <div *ngIf="editBilling; else email" class="form-floating my-3 mb-8">
-          <input id="email" type="text" class="form-control" placeholder="Address" required=""/>
-          <label for="email">Email</label>
-        </div>
-        <ng-template #email>
-          <p class="text-sm">sale&#64;uomo.com</p>
-        </ng-template>
-        <div *ngIf="editBilling; else phone" class="form-floating my-3 mb-3">
-          <input id="phone_number" type="text" class="form-control" placeholder="Address" required=""/>
-          <label for="phone_number">Contact Number</label>
-        </div>
-        <ng-template #phone>
-          <p class="text-sm">+1 246-345-0695</p>
-        </ng-template>
+        <form [formGroup]="billingForm">
+          <div *ngIf="editBilling && !billingAddress.address; else firstName"
+               class="form-floating my-3 mb-3 {{billingForm.get('address').invalid && billingForm.get('address').touched ? 'invalid' : ''}}">
+          <textarea formControlName="address" id="address" style="height: 200px" type="text" class="form-control"
+                    placeholder="Address" required=""></textarea>
+            <label for="address">Address</label>
+          </div>
+          <ng-template #firstName>
+            <p class="text-sm w-75">
+              Daniel Robinson 1418 River Drive, Suite 35 Cottonhall, CA 9622 United States
+            </p>
+          </ng-template>
+          <br>
+          <div *ngIf="editBilling && !billingAddress.email; else email"
+               class="form-floating my-3 mb-8 {{billingForm.get('email').invalid && billingForm.get('email').touched ? 'invalid' : ''}}">
+            <input formControlName="email" id="email" type="text" class="form-control" placeholder="Email" required=""/>
+            <label for="email">Email</label>
+          </div>
+          <ng-template #email>
+            <p class="text-sm">sale&#64;uomo.com</p>
+          </ng-template>
+          <div *ngIf="editBilling && !billingAddress.phoneNumber; else phone"
+               class="form-floating my-3 mb-3 {{billingForm.get('phoneNumber').invalid && billingForm.get('phoneNumber').touched ? 'invalid' : ''}}">
+            <input formControlName="phoneNumber" id="phoneNumber" type="text" class="form-control" placeholder="Phone Number" required=""/>
+            <label for="phoneNumber">Contact Number</label>
+          </div>
+          <ng-template #phone>
+            <p class="text-sm">+1 246-345-0695</p>
+          </ng-template>
+        </form>
       </div>
     </div>
-    <div class="my-account__address-item shadow p-6 rounded-lg">
+    <ng-template #addBillingBtn>
+      <button class="bg-blue-600 text-white active:bg-blue-800 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+              type="button" (click)="addBilling = true; editBilling = true">
+        Add Billing Address <i class="ml-3 fa fa-plus"></i>
+      </button>
+    </ng-template>
+    <div *ngIf="addShipping; else addShippingBtn" class="my-account__address-item shadow p-6 rounded-lg">
       <div class="my-account__address-item__title d-flex justify-content-between mb-6">
         <div class="text-uppercase text-lg text-bold font-bold">Shipping Address</div>
         <a *ngIf="!editShipping; else saveShipping" class="text-lg border-b-2 cursor-pointer"
@@ -50,39 +63,52 @@
         <ng-template #saveShipping>
           <button
             class="bg-blue-600 text-white active:bg-blue-800 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-            type="button" (click)="editShipping = false">
+            type="button" (click)="onSubmitShipping()">
             Save
           </button>
         </ng-template>
       </div>
       <div class="my-account__address-item__detail">
-        <div *ngIf="editShipping; else firstName" class="form-floating my-3 mb-3">
-                      <textarea id="first_name_shipping" style="height: 200px" type="text" class="form-control"
-                                placeholder="Address" required=""></textarea>
-          <label for="first_name_shipping">First Name</label>
-        </div>
-        <ng-template #firstName>
-          <p class="text-sm w-75">
-            Daniel Robinson 1418 River Drive, Suite 35 Cottonhall, CA 9622 United States
-          </p>
-        </ng-template>
-        <br>
-        <div *ngIf="editShipping; else email" class="form-floating my-3 mb-8">
-          <input id="email_shipping" type="text" class="form-control" placeholder="Address" required=""/>
-          <label for="email_shipping">Email</label>
-        </div>
-        <ng-template #email>
-          <p class="text-sm">sale&#64;uomo.com</p>
-        </ng-template>
-        <div *ngIf="editShipping; else phone" class="form-floating my-3 mb-3">
-          <input id="phone_number_shipping" type="text" class="form-control" placeholder="Address"
-                 required=""/>
-          <label for="phone_number_shipping">Contact Number</label>
-        </div>
-        <ng-template #phone>
-          <p class="text-sm">+1 246-345-0695</p>
-        </ng-template>
+        <form [formGroup]="shippingForm">
+          <div *ngIf="editShipping; else firstName"
+               class="form-floating my-3 mb-3 {{shippingForm.get('address').invalid && shippingForm.get('address').touched ? 'invalid' : ''}}">
+            <textarea id="first_name_shipping" style="height: 200px" type="text"
+                      class="form-control" formControlName="address"
+                      placeholder="Address" required=""></textarea>
+            <label for="first_name_shipping">Address</label>
+          </div>
+          <ng-template #firstName>
+            <p class="text-sm w-75">
+              Daniel Robinson 1418 River Drive, Suite 35 Cottonhall, CA 9622 United States
+            </p>
+          </ng-template>
+          <br>
+          <div *ngIf="editShipping; else email"
+               class="form-floating my-3 mb-8 {{shippingForm.get('email').invalid && shippingForm.get('email').touched ? 'invalid' : ''}}">
+            <input formControlName="email" id="email_shipping" type="text" class="form-control" placeholder="Address" required=""/>
+            <label for="email_shipping">Email</label>
+          </div>
+          <ng-template #email>
+            <p class="text-sm">sale&#64;uomo.com</p>
+          </ng-template>
+          <div *ngIf="editShipping; else phone" class="form-floating my-3 mb-3 {{shippingForm.get('phoneNumber').invalid && shippingForm.get('phoneNumber').touched ? 'invalid' : ''}}">
+            <input  id="phone_number_shipping" type="text"
+                    class="form-control"
+                    placeholder="Address" formControlName="phoneNumber" required=""/>
+            <label for="phone_number_shipping">Contact Number</label>
+          </div>
+          <ng-template #phone>
+            <p class="text-sm">+1 246-345-0695</p>
+          </ng-template>
+        </form>
       </div>
     </div>
+    <ng-template #addShippingBtn>
+      <button class="bg-blue-600 text-white active:bg-blue-800 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+              type="button" (click)="addShipping = true; editShipping = true">
+        Add Shipping Address <i class="ml-3 fa fa-plus"></i>
+      </button>
+    </ng-template>
   </div>
 </div>
+

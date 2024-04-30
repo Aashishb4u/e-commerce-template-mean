@@ -1,7 +1,7 @@
 <ng-container *ngIf="!showOrders; else showOrdersTemplate">
   <div class="pagination-tab flex justify-end">
     <pagination-controls class="my-custom-pagination"
-                         (pageChange)="p = $event">
+                         (pageChange)="currentPage = $event">
 
     </pagination-controls>
   </div>
@@ -16,7 +16,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let order of orders | paginate: { itemsPerPage: 4, currentPage: p }">
+    <tr *ngFor="let order of orders | paginate: { itemsPerPage: 4, currentPage: currentPage }">
       <td class="p-3"><u>{{order.id}}</u></td>
       <td class="p-3">{{order.date}}</td>
       <td class="p-3">{{order.status}}</td>

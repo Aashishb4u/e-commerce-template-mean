@@ -31,47 +31,48 @@
       </div>
     </div>
     <div class="row row-cols-2 row-cols-md-3 row-cols-lg-3 row-cols-xxl-4">
-      <div *ngFor="let product of products | paginate: { itemsPerPage: 3, currentPage: productPage }" class="product-card-wrapper cursor-pointer mb-2">
-        <div
-          class="hover:brightness-95 product-card product-card_style9 border rounded-3 mb-3 mb-md-4 bg-white">
-          <div class="position-relative pb-4 p-2">
-            <div class="">
-              <img class="w-100 object-fit-cover" loading="lazy" [src]="product.img" width="255"
-                   height="200"
-                   alt="Cropped Faux leather Jacket">
-            </div>
-            <div class="anim_appear-bottom position-absolute w-100 text-center">
-              <button (click)="onEditProduct(product)" class="btn btn-primary">
-                <i class="fa fa-pencil"></i>
-              </button>
-            </div>
-          </div>
-          <div class="pc__info position-relative">
-            <p class="pc__category text-sm fs-13 fw-medium">{{product?.cat}}</p>
-            <h6 class="pc__title fs-16 mb-2"><a href="./product1_simple.html">{{product?.name}}</a></h6>
-            <div class="product-card__review d-sm-flex align-items-center">
-              <div class="reviews-group d-flex">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
+      <ng-container *ngFor="let product of products | paginate: { itemsPerPage: 3, currentPage: productPage }; let index = index">
+        <div appShowOnView [delay]="index * 100" class="opacity-0 product-card-wrapper cursor-pointer mb-2">
+          <div  class="hover:brightness-95 product-card product-card_style9 border rounded-3 mb-3 mb-md-4 bg-white">
+            <div class="position-relative pb-4 p-2">
+              <div class="">
+                <img class="w-100 object-fit-cover" loading="lazy" [src]="product.img" width="255"
+                     height="200"
+                     alt="Cropped Faux leather Jacket">
               </div>
-              <span
-                class="reviews-note text-lowercase text-secondary fs-13 ms-sm-1">{{product?.ratings}}</span>
+              <div class="anim_appear-bottom position-absolute w-100 text-center">
+                <button (click)="onEditProduct(product)" class="btn btn-primary">
+                  <i class="fa fa-pencil"></i>
+                </button>
+              </div>
             </div>
-            <div class="my-2 text-gray-500">
-              Without JobHunt i’d be homeless, they found me a job and got me sorted out quickly with
-              everything!
-              Can’t quite.
-            </div>
-            <div class="d-flex mt-4 gap-1 align-items-center">
-              <span class="product-card__price price fs-16 fw-semi-bold">{{product?.price}}</span> <span
-              class="text-gray-400">/ 400 ml</span>
+            <div class="pc__info position-relative">
+              <p class="pc__category text-sm fs-13 fw-medium">{{product?.cat}}</p>
+              <h6 class="pc__title fs-16 mb-2"><a href="./product1_simple.html">{{product?.name}}</a></h6>
+              <div class="product-card__review d-sm-flex align-items-center">
+                <div class="reviews-group d-flex">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                </div>
+                <span
+                  class="reviews-note text-lowercase text-secondary fs-13 ms-sm-1">{{product?.ratings}}</span>
+              </div>
+              <div class="my-2 text-gray-500">
+                Without JobHunt i’d be homeless, they found me a job and got me sorted out quickly with
+                everything!
+                Can’t quite.
+              </div>
+              <div class="d-flex mt-4 gap-1 align-items-center">
+                <span class="product-card__price price fs-16 fw-semi-bold">{{product?.price}}</span> <span
+                class="text-gray-400">/ 400 ml</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </ng-container>
     </div>
     <div class="d-flex justify-content-end">
       <div class="pagination-tab flex justify-end">

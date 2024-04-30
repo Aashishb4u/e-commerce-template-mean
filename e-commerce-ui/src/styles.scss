@@ -280,9 +280,29 @@ md-sidenav-container > .md-sidenav-backdrop.md-sidenav-shown {
 /* In your global CSS file (styles.css) or a component-specific CSS file */
 .fade-in {
   opacity: 1 !important;
-  transition: opacity 500ms ease-in; /* Adjust the duration and easing as desired */
+  transition: opacity 300ms ease-in; /* Adjust the duration and easing as desired */
 }
 
 [appFadeInOnView] {
   opacity: 0; /* Initial opacity */
+}
+
+.form-floating.invalid  {
+  label {
+    color: #f45e5e !important; /* Set the desired color for the placeholder text */
+  }
+  input, textarea {
+    &:focus {
+      box-shadow: 0 0 0 0.25rem #f4433617 !important;
+    }
+    border: 2px solid red !important;
+  }
+}
+//
+//.mat-drawer-container {
+//  z-index: 1999 !important;
+//}
+
+.mat-drawer-content {
+  overflow-x: hidden !important;
 }
