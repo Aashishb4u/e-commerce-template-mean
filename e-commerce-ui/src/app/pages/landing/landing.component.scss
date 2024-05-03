@@ -165,11 +165,20 @@
   .banner-text-6xl {
     font-size: 24px !important;
   }
+
+  .mobile {
+    display: block !important;
+  }
 }
 
 @media (min-width: 768px) {
   .product-card_style9 .pc__info {
     margin: 0.875rem 1.25rem 0.8125rem;
+  }
+
+
+  .large-screen {
+    display: block !important;
   }
 }
 
@@ -178,4 +187,14 @@
     order: -1;
   }
 
+}
+
+.bullet-img-container {
+  padding: 1rem;
+  background: var(--faint-pink);
+  border-radius: 100%;
+}
+.bullet-img {
+  width: 35px;
+  filter: invert(20%);
 }

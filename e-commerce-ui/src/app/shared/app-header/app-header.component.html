@@ -13,7 +13,7 @@ navbar-expand-md navbar-light bg-light">
     </div>
     <div class="low-767">
       <div class="ml-auto d-flex align-items-center justify-content-end">
-        <button class="setting-icon-mobile" [matMenuTriggerFor]="menu" mat-mini-fab
+        <button class="setting-icon-mobile" [matMenuTriggerFor]="drawerMenu" mat-mini-fab
                 aria-label="Example icon button with a filter list icon">
           <img style="width: 30px" src="assets/icons/trendy-nav.png" alt="">
         </button>
@@ -71,44 +71,52 @@ navbar-expand-md navbar-light bg-light">
           </li>
         </ul>
       </div>
-      <div *ngIf="!isAuthenticated" class="ml-auto d-flex align-items-center justify-content-end">
+      <div *ngIf="!isAuthenticated" class="cart ml-auto d-flex align-items-center justify-content-end">
         <div class="d-flex gap-4">
           <div>
             <mat-icon (click)="showCart()" class="cursor-pointer">shopping_cart</mat-icon>
           </div>
           <div>
-            <mat-icon [matMenuTriggerFor]="menu" class="cursor-pointer">settings</mat-icon>
+            <mat-icon [matMenuTriggerFor]="loginMenu" class="cursor-pointer">settings</mat-icon>
+            <mat-menu #loginMenu="matMenu">
+              <ng-template matMenuContent let-id="id">
+                <button mat-menu-item [routerLink]="['/login']">
+                  <i class="fa fa-user-circle text-base mr-3"></i> Log In
+                </button>
+              </ng-template>
+            </mat-menu>
           </div>
         </div>
       </div>
-<!--      <div *ngIf="isAuthenticated" class="cursor-pointer d-flex justify-content-end">-->
-<!--        <div [matMenuTriggerFor]="userMenu" #menuTrigger class="d-flex justify-content-center gap-3 align-items-center">-->
-<!--          <div class="user-icon">-->
-<!--            <button mat-mini-fab class="mat-button-icon-btn m-r-1"-->
-<!--                    aria-label="Example icon button with a plus one icon">-->
-<!--              <mat-icon>account_circle</mat-icon>-->
-<!--            </button>-->
-<!--          </div>-->
-<!--          <div class="user-name-box"><b>{{apiService?.userName | titlecase}}</b></div>-->
-<!--        </div>-->
-<!--        <mat-menu #userMenu="matMenu">-->
-<!--          <ng-template matMenuContent let-id="id">-->
-<!--            <button mat-menu-item-->
-<!--                    (click)="onAdminPanel()">Admin Panel-->
-<!--              <mat-icon color="primary">home</mat-icon>-->
-<!--            </button>-->
-<!--            <button mat-menu-item-->
-<!--                    (click)="togglePopup()">Log Out-->
-<!--              <mat-icon color="primary">logout</mat-icon>-->
-<!--            </button>-->
-<!--          </ng-template>-->
-<!--        </mat-menu>-->
-<!--      </div>-->
+      <div *ngIf="isAuthenticated" class="cursor-pointer d-flex justify-content-end">
+        <div [matMenuTriggerFor]="userMenu" #menuTrigger class="d-flex justify-content-center gap-3 align-items-center">
+          <div class="user-icon">
+            <button mat-mini-fab class="mat-button-icon-btn m-r-1"
+                    aria-label="Example icon button with a plus one icon">
+              <mat-icon>account_circle</mat-icon>
+            </button>
+          </div>
+          <div class="user-name-box"><b>{{apiService?.userName | titlecase}}</b></div>
+        </div>
+        <mat-menu #userMenu="matMenu">
+          <ng-template matMenuContent let-id="id">
+            <button mat-menu-item
+                    (click)="onAdminPanel()">Admin Panel
+              <mat-icon color="primary">home</mat-icon>
+            </button>
+            <button mat-menu-item
+                    (click)="togglePopup()">Log Out
+              <mat-icon color="primary">logout</mat-icon>
+            </button>
+          </ng-template>
+        </mat-menu>
+
+      </div>
     </div>
   </div>
 </nav>
 
-<mat-menu #menu="matMenu">
+<mat-menu #drawerMenu="matMenu">
   <button [routerLink]="'/login'" mat-menu-item>
     <i class="fa fa-user-circle text-base mr-3"></i>
     {{!isAuthenticated ? 'Log In' : apiService?.userName | titlecase}}

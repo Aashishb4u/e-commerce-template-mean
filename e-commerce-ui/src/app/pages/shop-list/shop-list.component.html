@@ -2,13 +2,13 @@
 
 <div class="shop-banner position-relative lg:p-0 p-3">
   <div class="shop-background-img" style="background-color: #f5e6e0;">
-    <img loading="lazy" [src]="imageBanner" width="1759" height="420" alt="Pattern" class="slideshow-bg__img object-fit-cover rounded-lg lg:rounded-none">
+    <img loading="lazy" [src]="imageBanner" width="1759" height="420" alt="Pattern" class="slideshow-bg__img object-fit-cover rounded-xl lg:rounded-none">
   </div>
 
   <div class="lg:p-0 p-4 shop-banner__content container position-absolute start-50 top-50 translate-middle">
-    <h1 class="h1 text-3xl lg:text-4xl text-white text-uppercase text-center fw-bold mb-5 lg:mb-8">{{title}}</h1>
+    <h1 class="h1 text-2xl lg:text-4xl text-white text-uppercase text-center fw-bold mb-5 lg:mb-8">{{title}}</h1>
     <ul class="d-flex gap-4 justify-content-center flex-wrap list-unstyled text-uppercase h6">
-      <li *ngFor="let cat of menus" class="me-3 me-xl-4 pe-1 text-gray-400">
+      <li *ngFor="let cat of menus" class="text-center me-3 me-xl-4 pe-1 text-center text-gray-400">
         <a class="lg:text-base text-sm menu-link menu-link_us-s menu-link_active">
           {{cat.name}}
         </a>

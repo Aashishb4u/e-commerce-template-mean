@@ -5,37 +5,11 @@
     <!--  <div class="nc-BgGlassmorphism absolute inset-x-0 md:top-10 left-2.5 xl:top-40 min-h-0 pl-20 py-24 flex overflow-hidden z-0" data-nc-id="BgGlassmorphism"><span class="block bg-[#ef233c] w-72 h-72 rounded-full mix-blend-multiply filter blur-3xl opacity-10 lg:w-96 lg:h-96"></span><span class="block bg-[#04868b] w-72 h-72 -ml-20 mt-40 rounded-full mix-blend-multiply filter blur-3xl opacity-10 lg:w-96 lg:h-96 nc-animation-delay-2000"></span></div>-->
     <div class="row lg:mt-2">
       <div class="col-lg-6 slideshow-boxed-right mb-4">
-        <!--      <div class="position-relative h-100 slideshow swiper-container js-swiper-slider w-100 bg-white mx-0 mt-0 swiper-container-fade swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events">-->
-        <!--        <div class="position-relative rounded-lg flex h-100 justify-center items-center flex-col">-->
-
-        <!--          <div class="w-full h-100 bg-[url('assets/grad_banner.png')] rounded-lg bg-cover bg-center">-->
-        <!--            <div class="w-full h-full flex min-h-screen justify-center items-center rounded-lg backdrop-brightness-50">-->
-        <!--              <div-->
-        <!--                class="w-9/12 slideshow-text full-width_padding position-absolute start-50 top-50 translate-middle pb-4 pb-xl-5">-->
-        <!--                <p-->
-        <!--                  class="text_dash text-uppercase fs-base fw-medium animate animate_fade animate_btt animate_delay-3 text-white mb-2">-->
-        <!--                  URO ONE</p>-->
-        <!--                <h2-->
-        <!--                  class="banner-text-6xl fs-45 animate animate_fade animate_btt animate_delay-5 mb-2 text-white text-uppercase lh-1 text-6xl mb-3">-->
-        <!--                  High Performance</h2>-->
-        <!--                <h2 style="line-height: 2.5rem"-->
-        <!--                    class="banner-text-3xl fs-45 animate animate_fade animate_btt animate_delay-5 mb-4 opacity-60 text-white text-uppercase">-->
-        <!--                  Lubricants, Metal working fluids, Greases, Additives, Fuel Oil Additive and Base Oils</h2>-->
-        <!--                <div class="animate animate_fade animate_btt animate_delay-7">-->
-        <!--                  <a href="./shop1.html"-->
-        <!--                     class="theme-btn btn btn-primary border-0 fw-semi-bold text-uppercase theme-bg-color-secondary border-radius-10 btn-50 fs-base text-white text-primary">Shop-->
-        <!--                    Now</a>-->
-        <!--                </div>-->
-        <!--              </div>-->
-        <!--            </div>-->
-        <!--          </div>-->
-        <!--        </div>-->
-        <!--      </div>-->
         <div class="position-relative">
           <ngx-slick-carousel class="carousel"
                               #slickModal="slick-carousel"
                               [config]="slideConfig">
-            <div ngxSlickItem *ngFor="let slide of slides" class="position-relative slide">
+            <div ngxSlickItem *ngFor="let slide of slides" class="position-relative slide h-100">
               <img class="rounded-xl w-100 h-100 object-fit-cover" src="{{ slide.img }}" alt="" width="100%">
               <div
                 class="w-9/12 slideshow-text full-width_padding position-absolute start-50 top-50 translate-middle pb-4 pb-xl-5">
@@ -60,15 +34,29 @@
           </ngx-slick-carousel>
         </div>
       </div>
-      <div class="col-md-12 col-lg-3 order-lg--1 mb-4">
+      <div class="hidden mobile col-md-12 col-lg-3 order-lg--1 mb-4">
+        <div class="m-1 p-2 shadow border-gray-500 rounded-xl bg-white row gx-3 gy-4 row-cols-3">
+          <ng-container *ngFor="let bullet of bullets">
+            <div (click)="onSelectCategory(bullet)" class="d-flex flex-column justify-content-center align-items-center" >
+              <div class="bullet-img-container">
+                <img class="bullet-img" [src]="bullet.icon" alt="">
+              </div>
+              <div class="text-xs text-center pt-2">{{bullet.name | titlecase}}</div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <div class="hidden large-screen col-md-12 col-lg-3 order-lg--1 mb-4">
         <ul class="shadow bg-white list-disc categories-nav__list mb-0 h-100 border-gray-500 border-radius-10 py-xl-4">
-          <li (click)="onSelectCategory(bullet)" *ngFor="let bullet of bullets" class="categories-nav__item uppercase cursor-pointer"><a>{{bullet.name}}</a></li>
+          <li (click)="onSelectCategory(bullet)" *ngFor="let bullet of bullets" class="mb-6 uppercase cursor-pointer align-items-center d-flex gap-3">
+            <img style="width: 25px; filter: invert(40%)" [src]="bullet.icon" alt=""> <a class="categories-nav__item  mb-0">{{bullet.name}}</a>
+          </li>
         </ul>
       </div>
       <div class="col-md-6 col-lg-3 d-flex flex-column mb-4">
         <div
           class="rounded-lg position-relative collection-grid__item position-relative flex-grow-1 mb-4 border-radius-10">
-          <img class="h-100 w-100 object-fit-cover rounded-lg" src="assets/grease-pink.png" alt="">
+          <img class="h-100 w-100 object-fit-cover rounded-xl" src="assets/grease-pink.png" alt="">
           <div
             class="w-9/12 slideshow-text full-width_padding position-absolute start-50 top-40 translate-middle pb-4 pb-xl-5">
             <h3 class="banner-text-3xl text-uppercase fs-20 fw-semi-bold">Lubricants<br>and Greeses</h3>
@@ -76,7 +64,7 @@
           </div>
         </div>
         <div class="collection-grid__item position-relative flex-grow-1 mt-lg-1 mb-0 border-radius-10 ">
-          <img class="h-100 w-100 object-fit-cover rounded" src="assets/oils.png" alt="">
+          <img class="h-100 w-100 rounded-xl object-fit-cover rounded" src="assets/oils.png" alt="">
         </div>
       </div>
     </div>
@@ -121,7 +109,7 @@
     </div>
   </div>
 
-  <div style="background: #F1E9E9" class="lg:px-10 px-4 pt-4">
+  <div  class="faint-pink lg:px-10 px-4 pt-4">
     <div class="lg:my-16 my-4 position-relative">
       <!--      <div class="nc-BgGlassmorphism absolute inset-x-0 md:top-10 left-2.5 xl:top-40 min-h-0 pl-20 py-24 flex overflow-hidden z-0" data-nc-id="BgGlassmorphism"><span class="block bg-[#ef233c] w-72 h-72 rounded-full mix-blend-multiply filter blur-3xl opacity-10 lg:w-96 lg:h-96"></span><span class="block bg-[#04868b] w-72 h-72 -ml-20 mt-40 rounded-full mix-blend-multiply filter blur-3xl opacity-10 lg:w-96 lg:h-96 nc-animation-delay-2000"></span></div>-->
       <div class="d-flex align-items-center lg:justify-between justify-content-center flex-wrap mb-3 lg:mb-8 mb-xl-4">
@@ -271,7 +259,7 @@
     </div>
   </div>
 
-  <div style="background: #F1E9E9" class="lg:px-10 px-4 pt-4 pb-3 mb-5 position-relative">
+  <div  class="faint-pink lg:px-10 px-4 pt-4 pb-3 mb-5 position-relative">
     <h1 class="mb-4 section-title text-center theme-color text-uppercase">TESTIMONIALS</h1>
     <ngx-slick-carousel class="carousel position-relative"
                         #slickModal="slick-carousel"

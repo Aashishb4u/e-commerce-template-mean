@@ -12,3 +12,9 @@
     }
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .shipping-btn, .billing-btn {
+    width: 100%;
+  }
+}

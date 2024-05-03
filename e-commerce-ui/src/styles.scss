@@ -8,6 +8,7 @@ html, body {
   --blue-color: #084DE5;
   --red-color: #FD191A;
   --faint-red: #e37474;
+  --faint-pink: #F7E2E2;
 }
 
 //
@@ -69,6 +70,10 @@ p, div, span, h2, h1, h3, h4, h5 {
   background: #084DE5 !important;
   color: #fff !important;
   padding: 10px 15px;
+}
+
+.faint-pink {
+  background: var(--faint-pink);
 }
 
 .btn-theme-2 {

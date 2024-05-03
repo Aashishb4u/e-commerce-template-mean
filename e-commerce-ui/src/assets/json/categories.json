@@ -5,6 +5,7 @@
     {
       "name": "Additives",
       "img": "assets/shop_banners/additives.png",
+      "icon": "assets/category-icons/additives.png",
       "children": [
         {
           "name": "Petrol system",
@@ -55,6 +56,7 @@
     {
       "name": "Industrial Oil",
       "img": "assets/shop_banners/industrial_oil.png",
+      "icon": "assets/category-icons/industrial_oil.png",
       "children": [
         {"name": "Hydraulic Oils"},
         {"name": "Circulating Oils"},
@@ -75,6 +77,7 @@
     {
       "name": "AUTOMOTIVE",
       "img": "assets/shop_banners/automotive.png",
+      "icon": "assets/category-icons/automotive_oil.png",
       "children": [
         {"name": "Passenger Cars Engine Oils"},
         {"name": "Heavy Duty Engine Oils Motor Trucks"},
@@ -97,6 +100,7 @@
     {
       "name": "Cosmetics",
       "img": "assets/shop_banners/cosmetics.png",
+      "icon": "assets/category-icons/cosmetics.png",
       "children": [
         {"name": "Hydro finish Restore Polish PCS 1"},
         {"name": "Perfect Micro Polish PCS 2"},
@@ -107,6 +111,7 @@
     {
       "name": "AEROSOLS",
       "img": "assets/shop_banners/aerosols.png",
+      "icon": "assets/category-icons/aerosols.png",
       "children": [
         {"name": "Chaine Clean and Degreaser Spray"},
         {"name": "Chain Lube Adhesive Spray"},
@@ -124,6 +129,7 @@
     {
       "name": "CUTTING & GRINDING FLUIDS",
       "img": "assets/shop_banners/cutting_and_grinding_fluids.png",
+      "icon": "assets/category-icons/laser.png",
       "children": [
         {"name": "Water Soluble Oils"},
         {"name": "Semi-Synthetic Coolants"},
@@ -135,6 +141,7 @@
     {
       "name": "CORROSION PREVENTIVES",
       "img": "assets/shop_banners/corrosion_preventives.png",
+      "icon": "assets/category-icons/corrosion_preventives.png",
       "children": [
         {"name": "Water Based"},
         {"name": "Oil Based"},
@@ -144,6 +151,7 @@
     {
       "name": "CLEANERS",
       "img": "assets/shop_banners/cleaners.png",
+      "icon": "assets/category-icons/bucket.png",
       "children": [
         {"name": "Deep Clean -Alkaline- Oil Rejecting"},
         {"name": "Deep Shine 6 to 9 Floor Cleaners"},
@@ -156,6 +164,7 @@
     {
       "name": "DRAWING & STAMPING",
       "img": "assets/shop_banners/drawing_and_stamping.png",
+      "icon": "assets/category-icons/stamp.png",
       "children": [
         {"name": "Soluble Oils (Water-Based)"},
         {"name": "Synthetics (Water-Based)"},
@@ -167,6 +176,7 @@
     {
       "name": "GREASES",
       "img": "assets/shop_banners/greases.png",
+      "icon": "assets/category-icons/greese.png",
       "children": [
         {"name": "High-Performance Greases"},
         {"name": "Multi-Purpose Greases"},
@@ -180,6 +190,7 @@
     {
       "name": "QUENCH & FORGING OILS",
       "img": "assets/shop_banners/quench_and_forging_oils.png",
+      "icon": "assets/category-icons/crude.png",
       "children": [
         {"name": "Quenching Oils"},
         {"name": "Quenching Oil Additives"}
@@ -188,6 +199,7 @@
     {
       "name": "PHOSPHATE COATING",
       "img": "assets/shop_banners/phosphate_coating.png",
+      "icon": "assets/category-icons/spray-gun.png",
       "children": [
         {"name": "pre-treatment Chemicals"}
       ]
@@ -195,6 +207,7 @@
     {
       "name": "LUBRICANTS ADDITIVES",
       "img": "assets/shop_banners/lubricants_additives.png",
+      "icon": "assets/category-icons/machine.png",
       "children": [
         {"name": "Engine Oil Additives Package"},
         {"name": "Gear Oil Additive Package"},

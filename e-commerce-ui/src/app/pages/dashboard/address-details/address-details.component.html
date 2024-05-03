@@ -1,9 +1,9 @@
 <div class="page-content my-account__address">
-  <p class="notice mb-12">The following addresses will be used on the checkout page by default.</p>
-  <div class="my-account__address-list
+  <p class="notice lg:mb-12 mb-5 mt-8 lg:mt-0">The following addresses will be used on the checkout page by default.</p>
+  <div class="my-account__address-list flex-lg-row flex-column
   justify-content-between d-flex gap-4 align-items-start">
     <div *ngIf="addBilling; else addBillingBtn"
-         class="my-account__address-item shadow p-6 rounded-lg">
+         class="my-account__address-item w-100 shadow p-6 rounded-lg">
       <div class="my-account__address-item__title d-flex justify-content-between mb-6">
         <div class="text-uppercase text-lg text-bold font-bold">Billing Address</div>
         <a *ngIf="!editBilling; else saveBilling" class="text-lg border-b-2 cursor-pointer"
@@ -50,12 +50,12 @@
       </div>
     </div>
     <ng-template #addBillingBtn>
-      <button class="bg-blue-600 text-white active:bg-blue-800 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+      <button class="bg-blue-600 billing-btn text-white active:bg-blue-800 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
               type="button" (click)="addBilling = true; editBilling = true">
         Add Billing Address <i class="ml-3 fa fa-plus"></i>
       </button>
     </ng-template>
-    <div *ngIf="addShipping; else addShippingBtn" class="my-account__address-item shadow p-6 rounded-lg">
+    <div *ngIf="addShipping; else addShippingBtn" class="my-account__address-item w-100 shadow p-6 rounded-lg">
       <div class="my-account__address-item__title d-flex justify-content-between mb-6">
         <div class="text-uppercase text-lg text-bold font-bold">Shipping Address</div>
         <a *ngIf="!editShipping; else saveShipping" class="text-lg border-b-2 cursor-pointer"
@@ -104,7 +104,7 @@
       </div>
     </div>
     <ng-template #addShippingBtn>
-      <button class="bg-blue-600 text-white active:bg-blue-800 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+      <button class="shipping-btn bg-blue-600 text-white active:bg-blue-800 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
               type="button" (click)="addShipping = true; editShipping = true">
         Add Shipping Address <i class="ml-3 fa fa-plus"></i>
       </button>

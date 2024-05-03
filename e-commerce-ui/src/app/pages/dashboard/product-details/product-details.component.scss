@@ -53,3 +53,10 @@
 .product-card_style9 .pc__info {
   margin: 0.875rem 1.25rem 0.8125rem;
 }
+
+@media only screen and (max-width: 600px) {
+  .add-btn-container {
+    width: 100%;
+    justify-content: end;
+  }
+}
